@@ -40,6 +40,7 @@
 #include "\mcc_sandbox_mod\VAS\menu.hpp"
 #include "\mcc_sandbox_mod\spectator\spectating.hpp"
 #include "\mcc_sandbox_mod\hcam\hcam.hpp"
+#include "\mcc_sandbox_mod\remoteExec.hpp"
 //---------------------------Functions------------------------------------------------
 
 class CfgFunctions
@@ -56,6 +57,11 @@ class CfgFunctions
 			{
 				preInit = 1;
 				description = "Pre init mod only";
+			};
+
+			class remoteExec
+			{
+				description = "Execute a whitelisted MCC function on remote machines.";
 			};
 			
 			class mobileRespawn

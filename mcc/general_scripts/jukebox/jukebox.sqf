@@ -26,7 +26,7 @@ switch (_type) do
 			{
 				_track = (MCC_musicTracks_array select (lbCurSel MCC_JUKEBOX_TRACK)) select 1;
 				MCC_musicTracks_index = lbCurSel MCC_JUKEBOX_TRACK;
-				[[2,compile format ["playMusic '%1'",_track]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+				[[2, "playMusic", [_track]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 			} else 
 			{
 				_track = (MCC_soundTracks_array select (lbCurSel MCC_JUKEBOX_TRACK)) select 1;
@@ -40,7 +40,7 @@ switch (_type) do
 			{
 				_track = (MCC_musicTracks_array select (lbCurSel MCC_JUKEBOX_TRACK)) select 1;
 				MCC_musicTracks_index = lbCurSel MCC_JUKEBOX_TRACK;
-				[[2,compile format ["playMusic '%1'",_track]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+				[[2, "playMusic", [_track]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 				copyToClipboard format ["%1",_track];
 			} else 
 			{
@@ -62,7 +62,7 @@ switch (_type) do
 			{
 				_track = (MCC_musicTracks_array select (lbCurSel MCC_JUKEBOX_TRACK)) select 1;
 				MCC_musicTracks_index = lbCurSel MCC_JUKEBOX_TRACK;
-				[[2,compile format ["playMusic '%1'",_track]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+				[[2, "playMusic", [_track]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 			} else 
 			{
 				_track = (MCC_soundTracks_array select (lbCurSel MCC_JUKEBOX_TRACK)) select 1;
@@ -72,7 +72,7 @@ switch (_type) do
 	
    case 3:	//Stop
 	{
-		[[2,compile "playMusic ''"], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+		[[2, "playMusic", [""]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 	}; 
 
    case 4:	//Volume slider
@@ -98,7 +98,7 @@ switch (_type) do
 						  _cond='%6';
 						  _track='%7';
 						  MCC_jukeboxMusic=%8;
-						  [[_zone, _zonePos, _zoneX, _zoneY, _activate, _cond,_track,MCC_jukeboxMusic ],'MCC_fnc_MusicTrigger',true,false] spawn BIS_fnc_MP;
+						  [[_zone, _zonePos, _zoneX, _zoneY, _activate, _cond,_track,MCC_jukeboxMusic ],'MCC_fnc_MusicTrigger',true,false] spawn MCC_fnc_remoteExec;
 						   sleep 1;
 						  "								 
 						  ,_zone
@@ -116,7 +116,7 @@ switch (_type) do
 		_markerName setMarkerColorLocal "ColorBlue";
 		_markerName setMarkerTypeLocal  "mil_box";
 		_markerName setmarkertextlocal _markerName;
-		[[_zone, _zonePos, _zoneX, _zoneY, _activate, _cond,_track,MCC_jukeboxMusic ],'MCC_fnc_MusicTrigger',true,false] spawn BIS_fnc_MP;
+		[[_zone, _zonePos, _zoneX, _zoneY, _activate, _cond,_track,MCC_jukeboxMusic ],'MCC_fnc_MusicTrigger',true,false] call MCC_fnc_remoteExec;
 	};
 	
 	case 6:	//Switch to music tracks

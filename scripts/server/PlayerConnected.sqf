@@ -66,5 +66,5 @@ if (isnil "_pilotLevel") then {
 	};
 	
  [[["playerLevel","commanderLevel","arLevel","riflemanLevel","ATLevel","corpsmanLevel","marksmanLevel","specialistLevel","crewLevel","pilotLevel","CP_gotValueFromServer"],
-  [_playerLevel,_commanderLevel,_arLevel,_riflemanLevel,_ATLevel,_corpsmanLevel,_marksmanLevel,_specialistLevel,_crewLevel,_pilotLevel,"true"],
-  _uid],"CP_fnc_setValue", true, false] spawn BIS_fnc_MP;
+  [_playerLevel,_commanderLevel,_arLevel,_riflemanLevel,_ATLevel,_corpsmanLevel,_marksmanLevel,_specialistLevel,_crewLevel,_pilotLevel,true],
+  _uid],"CP_fnc_setValue", true, false] call MCC_fnc_remoteExec;

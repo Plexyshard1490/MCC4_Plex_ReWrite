@@ -75,15 +75,8 @@ if (isServer || isDedicated) then {
 if(isDedicated) exitWith{};
 WaitUntil{not isNull player};
 
-_arti_cond_class = "false";
-if(count _arti_cond_classes > 0) then {
-	{_arti_cond_class = _arti_cond_class + " || typeOf player == " + str _x } foreach _arti_cond_classes;
-} else{_arti_cond_class = "true"};
-
-_arti_cond_side = "false";
-if(count _arti_cond_sides > 0) then {
-	{_arti_cond_side = _arti_cond_side + " || playerSide == " + str _x} foreach _arti_cond_sides;
-} else{_arti_cond_side = "true"};
+private _classAllowed = _arti_cond_classes isEqualTo [] || {typeOf player in _arti_cond_classes};
+private _sideAllowed = _arti_cond_sides isEqualTo [] || {playerSide in _arti_cond_sides};
 
 _arti_cond_weapon = "false";
 if(count _arti_cond_weapons > 0) then {
@@ -97,7 +90,7 @@ arti_func_keyspressed = compile (preprocessFileLineNumbers (BON_ARTI_PATH+"bon_a
 arti_func_getSplashPos = compile (preprocessFileLineNumbers (BON_ARTI_PATH+"bon_arti_func_getSplashPos.sqf"));
 sleep 0.1;
 
-if(local player && call compile _arti_cond_side && call compile _arti_cond_class) then {
+if (local player && _sideAllowed && _classAllowed) then {
 	if(HW_arti_show_pos_on_map) then{
 		(findDisplay 46) displayAddEventHandler ["KeyDown","_this call arti_func_keyspressed"];
 	};

@@ -1,6 +1,6 @@
 //===================================================================MCC_fnc_trapSingle======================================================================================
 // Create an IED
-//Example:[[pos,IEDkind,IEDVolume,IEDExplosionType,IEDDisarmTime,IEDJammable,IEDTriggerType,IEDdistance,IEDside,IEDMarkerName,IEDDir,_groupArray,_ambushSide],'MCC_fnc_trapSingle',true,false] call BIS_fnc_MP;
+//Example:[[pos,IEDkind,IEDVolume,IEDExplosionType,IEDDisarmTime,IEDJammable,IEDTriggerType,IEDdistance,IEDside,IEDMarkerName,IEDDir,_groupArray,_ambushSide],'MCC_fnc_trapSingle',true,false] call MCC_fnc_remoteExec;
 // Params: 
 // 	pos: array, trap position
 // 	IEDkind: string, any oject's vehicleClass
@@ -42,13 +42,13 @@ _fakeIed = _trapkind createVehicle _pos;
 _fakeIed setposatl _pos;
 
 _init ='_this addaction ["<t color=""#FF9900"">" + "Disarm IED" + "</t>","' + MCC_path + 'mcc\general_scripts\traps\ied_disarm.sqf","",6,false,true,"_target distance _this < 10"];';
-[[[netid _fakeIed,_fakeIed], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+[[[netid _fakeIed,_fakeIed], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 _fakeIed setdir _iedDir;
 
 _dummy = "Bomb" createVehicle _pos;
 _dummy addEventHandler ["handleDamage",{_this call MCC_fnc_iedHit;0}];
 _init = '_this hideobject true;';
-[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 
 _fakeIed setdir _iedDir;
 _dummy attachto [_fakeIed,[0,0,0]];
@@ -108,7 +108,7 @@ if (count _groupArray > 0) then
 	waituntil {alive _ambush};
 	
 	//Sync the IED and the ambush group
-	[[_ambushPos , _pos, 9999],"MCC_fnc_iedSync",false,false] call BIS_fnc_MP;
+	[[_ambushPos , _pos, 9999],"MCC_fnc_iedSync",false,false] call MCC_fnc_remoteExec;
 };
 
 //Spawn the IED script

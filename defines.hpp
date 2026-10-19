@@ -42,6 +42,7 @@
 #include "bon_artillery\dialog\Artillery.hpp"
 #include "VAS\menu.hpp"
 #include "spectator\spectating.hpp"
+#include "remoteExec.hpp"
 
 //---------------------------Functions------------------------------------------------
 class CfgFunctions
@@ -53,6 +54,11 @@ class CfgFunctions
 		class general
 		{
 			file = "mcc\fnc\general";
+
+			class remoteExec
+			{
+				description = "Execute a whitelisted MCC function on remote machines.";
+			};
 
 			class mobileRespawn
 			{

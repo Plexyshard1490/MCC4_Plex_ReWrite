@@ -67,7 +67,7 @@ if (MCC_CASrequestMarker && _pressed==0) then //CAS Request
 		_ammount	=  floor (((getMarkerSize _marker) select 1)/50) + 1; 		//Ammount of drop min 0 max 6
 		
 		hint "Air support incomming."; 
-		[[_ammount, MCC_spawnkind , getmarkerpos _marker, MCC_planeType, _spawn,_away],"MCC_fnc_airDrop",true,false] spawn BIS_fnc_MP;
+		[[_ammount, MCC_spawnkind , getmarkerpos _marker, MCC_planeType, _spawn,_away],"MCC_fnc_airDrop",true,false] call MCC_fnc_remoteExec;
 						
 		MCC_CASrequestMarker = false;			//Wait and delete the marker
 		sleep 40;

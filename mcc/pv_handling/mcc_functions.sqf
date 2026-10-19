@@ -160,28 +160,28 @@ IedDisablingExplosion =
 				if (((_x distance _pos) < _killRadius) && (_random > 1))then	{
 					_x setVariable ["ace_sys_vehicledamage_enable", false];					
 					_x setdamage 0.7;
-					[[2,compile format ["vehicle %1  setHit ['wheel_1_1_steering', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-					[[2,compile format ["vehicle %1  setHit ['wheel_2_1_steering', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-					[[2,compile format ["vehicle %1  setHit ['motor', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-					[[2,compile format ["vehicle %1  setHit ['glass1', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-					[[2,compile format ["vehicle %1  setHit ['glass2', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-					[[2,compile format ["vehicle %1  setHit ['glass3', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-					[[2,compile format ["vehicle %1  setHit ['glass4', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-					[[2,compile format ["vehicle %1  setHit ['glass5', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-					[[2,compile format ["vehicle %1  setHit ['glass6', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+					[[2, "setVehicleHit", [netId _x, "wheel_1_1_steering", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "wheel_2_1_steering", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "motor", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "glass1", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "glass2", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "glass3", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "glass4", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "glass5", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "glass6", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
 					//[-2, {[_this,5,time,false,true] spawn BIS_Effects_Burn}, _x] call CBA_fnc_globalExecute;
 				} else	{
 							_x setVariable ["ace_sys_vehicledamage_enable", false];
 							_x setdamage 0.4;
-							[[2,compile format ["vehicle %1 setHit ['wheel_1_1_steering', 0.7]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-							[[2,compile format ["vehicle %1 setHit ['wheel_2_1_steering', 0.7]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-							[[2,compile format ["vehicle %1 setHit ['motor', 0.7]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-							[[2,compile format ["vehicle %1 setHit ['glass1', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-							[[2,compile format ["vehicle %1 setHit ['glass2', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-							[[2,compile format ["vehicle %1 setHit ['glass3', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-							[[2,compile format ["vehicle %1 setHit ['glass4', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-							[[2,compile format ["vehicle %1 setHit ['glass5', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-							[[2,compile format ["vehicle %1 setHit ['glass6', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+							[[2, "setVehicleHit", [netId _x, "wheel_1_1_steering", 0.7]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+							[[2, "setVehicleHit", [netId _x, "wheel_2_1_steering", 0.7]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+							[[2, "setVehicleHit", [netId _x, "motor", 0.7]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+							[[2, "setVehicleHit", [netId _x, "glass1", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+							[[2, "setVehicleHit", [netId _x, "glass2", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+							[[2, "setVehicleHit", [netId _x, "glass3", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+							[[2, "setVehicleHit", [netId _x, "glass4", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+							[[2, "setVehicleHit", [netId _x, "glass5", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+							[[2, "setVehicleHit", [netId _x, "glass6", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
 						}
 			};
 				
@@ -190,9 +190,9 @@ IedDisablingExplosion =
 				if (((_x distance _pos) < _killRadius) && (_random > 1))then	{
 						_x setVariable ["ace_sys_vehicledamage_enable", false];					
 						_x setdamage 0.7;
-						[[2,compile format ["vehicle %1 setHit ['Ltrack', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-						[[2,compile format ["vehicle %1 setHit ['Rtrack', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-						[[2,compile format ["vehicle %1 setHit ['motor', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+						[[2, "setVehicleHit", [netId _x, "Ltrack", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+						[[2, "setVehicleHit", [netId _x, "Rtrack", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+						[[2, "setVehicleHit", [netId _x, "motor", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
 						//[-2, {[_this,5,time,false,true] spawn BIS_Effects_Burn}, _x] call CBA_fnc_globalExecute;
 					};
 			};
@@ -691,7 +691,7 @@ MCC_ARTY_BOMB = 					//Regular bombs
 				_shell = _shelltype createVehicle [(_pos select 0) + _shellspread - 2*(random _shellspread) ,(_pos select 1) + _shellspread - 2*(random _shellspread), 100];
 				_shell setVelocity [0, 0, -50];
 				WaitUntil{(position _shell select 2)<35};
-				if (_sound) then {[[[netid _shell,_shell],format["bon_Shell_In_v0%1",[1,2,3,4,5,6,7] select round random 6]], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP}; 
+				if (_sound) then {[[[netid _shell,_shell],format["bon_Shell_In_v0%1",[1,2,3,4,5,6,7] select round random 6]], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;};
 				sleep 4;
 			};
 	};
@@ -717,7 +717,7 @@ MCC_ARTY_BOMB_ALPHA = 					//Regular bombs
 			{
 				_bomb = "GrenadeHand" createVehicle [(_pos select 0) + _shellspread - 2*(random _shellspread) ,(_pos select 1) + _shellspread - 2*(random _shellspread), 100];
 				WaitUntil{(position _bomb select 2)<35}; 
-				if (_sound) then {[[[netid _bomb,_bomb],format["bon_Shell_In_v0%1",[1,2,3,4,5,6,7] select round random 6]], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP}; 
+				if (_sound) then {[[[netid _bomb,_bomb],format["bon_Shell_In_v0%1",[1,2,3,4,5,6,7] select round random 6]], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;};
 				WaitUntil{(position _bomb select 2)<3}; 
 				_bombpos = position _bomb;
 				deletevehicle _bomb;
@@ -747,7 +747,7 @@ MCC_ARTY_FLARE = 					//Flares
 			{
 				_bomb = "GrenadeHand" createVehicle [(_pos select 0) + _shellspread - 2*(random _shellspread) ,(_pos select 1) + _shellspread - 2*(random _shellspread), 300];
 				WaitUntil{(position _bomb select 2)<250};
-				if (_sound) then {[[[netid _bomb,_bomb],format["bon_Shell_In_v0%1",[1,2,3,4,5,6,7] select round random 6]], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP}; 
+				if (_sound) then {[[[netid _bomb,_bomb],format["bon_Shell_In_v0%1",[1,2,3,4,5,6,7] select round random 6]], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;};
 				WaitUntil{(position _bomb select 2)<220};
 				_bombpos = position _bomb;
 				deletevehicle _bomb;
@@ -780,7 +780,7 @@ MCC_ARTY_DPICM =
 			{
 				_shell = _shelltype createVehicle [(_pos select 0) + _shellspread - 2*(random _shellspread) ,(_pos select 1) + _shellspread - 2*(random _shellspread), _hgt];
 				sleep 2; 
-				if (_sound) then {[[[netid _shell,_shell],format["bon_Shell_In_v0%1",[1,2,3,4,5,6,7] select round random 6]], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP}; 
+				if (_sound) then {[[[netid _shell,_shell],format["bon_Shell_In_v0%1",[1,2,3,4,5,6,7] select round random 6]], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;};
 				WaitUntil{(position _shell select 2)<100};
 				_bombpos = getpos _shell;
 				_burst = "HelicopterExploSmall" createVehicle _bombpos;
@@ -939,7 +939,7 @@ MCC_fnc_time =
 };
 //==================================================================MCC_fnc_setVehicleInit======================================================================================
 // Sets vehicle init
-// Example: [[[netID _unit,_unit], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+// Example: [[[netID _unit,_unit], _init], "MCC_fnc_setVehicleInit", true, false] spawn MCC_fnc_remoteExec;
 // Params: 
 //	_unit: object, vehicle we want to set its init. 
 //	_init: string, the new init command (use _this instead of this)
@@ -950,13 +950,15 @@ MCC_fnc_setVehicleInit =
 	
 	_unit = if (((_this select 0) select 0) == "") then {(_this select 0) select 1} else {objectFromNetID ((_this select 0) select 0)};
 	_unitinit = _this select 1;
-	//server sidechat format ["%1", _unitinit];
-	_unit call compile format ["%1",_unitinit];
+	diag_log format [
+		"MCC: Ignored SQF vehicle init for %1; remote SQF string execution is disabled.",
+		_unit
+	];
 };
 
 //==================================================================MCC_fnc_setVehicleName======================================================================================
 // Sets vehicle name
-// Example: [[[netid _unit,_unit], _name], "MCC_fnc_setVehicleName", true, true] spawn BIS_fnc_MP;
+// Example: [[[netid _unit,_unit], _name], "MCC_fnc_setVehicleName", true, true] spawn MCC_fnc_remoteExec;
 // Params: 
 //	_unit: object, vehicle we want to set its init. 
 //	_name: string, the new name
@@ -970,12 +972,12 @@ MCC_fnc_setVehicleName =
 	_unitname = _this select 1;
 	
 	_unit setVehicleVarName _unitname;
-	_unit call compile format ["%1=_This; PublicVariable ""%1""",_unitname];
+	missionNamespace setVariable [_unitname, _unit, true];
 };
 
 //==================================================================MCC_fnc_setTime======================================================================================
 // Setstime on all clients
-// Example: [[year, month, day, hour, minute],"MCC_fnc_setTime",true,false] spawn BIS_fnc_MP;
+// Example: [[year, month, day, hour, minute],"MCC_fnc_setTime",true,false] spawn MCC_fnc_remoteExec;
 //	year: number, YYYY
 //	month: number, MM
 //	day: number, DD
@@ -993,7 +995,7 @@ MCC_fnc_setTime =
 
 //==================================================================MCC_fnc_setWeather======================================================================================
 // Sets weather  on all clients  - skip time by one hour to make the weather change
-// Example: [[[ Overcast, WindForce, Waves, Rain, Lightnings,fog]],"MCC_fnc_setWeather",true,false] spawn BIS_fnc_MP;
+// Example: [[[ Overcast, WindForce, Waves, Rain, Lightnings,fog]],"MCC_fnc_setWeather",true,false] spawn MCC_fnc_remoteExec;
 // Params: 
 //	Overcast: number, 0-1
 //	WindForce: number, 0-1
@@ -1022,7 +1024,7 @@ MCC_fnc_setWeather =
 
 //==================================================================MCC_fnc_globalSay3D======================================================================================
 // Say sound on 3d on all clients
-// Example: [[[netid _unit,_unit], _sound], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP;
+// Example: [[[netid _unit,_unit], _sound], "MCC_fnc_globalSay3D", true, false] spawn MCC_fnc_remoteExec;
 // Params: 
 //	_unit: object, sound's source
 // 	_sound: string, sound define in config
@@ -1039,7 +1041,7 @@ MCC_fnc_globalSay3D =
 
 //==================================================================MCC_fnc_globalHint======================================================================================
 // Broadcast a meesege on all clients
-// Example: [[_hint],'MCC_fnc_globalHint',true,true] spawn BIS_fnc_MP;
+// Example: [[_hint],'MCC_fnc_globalHint',true,true] spawn MCC_fnc_remoteExec;
 // Params: 
 //	_hint: string, messege to broadcast
 //==============================================================================================================================================================================	
@@ -1052,42 +1054,9 @@ MCC_fnc_globalHint =
 	hint _string; 
 };
 
-//==================================================================MCC_fnc_globalExecute======================================================================================
-// Global execute a command on selected clients or server
-// Example: [[mode,code], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-// Params: 
-//	mode: number, 0:clients only, 1: server only 2: all clients and server
-//	code: code, code to be executed
-//==============================================================================================================================================================================	
-MCC_fnc_globalExecute = 
-{
-	private ["_code","_type"];
-	
-	_type 	= _this select 0;
-	_code 	= _this select 1;
-
-	switch (_type) do
-		{
-			case 0:	//clients
-			{ 
-				if (!isServer) then {call _code}; 
-			};
-			
-			case 1:	//Server
-			{ 
-				if (isServer) then {call _code}; 
-			};
-			
-			case 2:	//all
-			{ 
-				call _code; 
-			};
-		};
-};
-
 //==================================================================MCC_fnc_groupchat======================================================================================
 // Send chat across MP
-// Example: [[[netid _unit,_unit],_text,_local], "MCC_fnc_groupchat", true, false] spawn BIS_fnc_MP;
+// Example: [[[netid _unit,_unit],_text,_local], "MCC_fnc_groupchat", true, false] spawn MCC_fnc_remoteExec;
 // Params: 
 //	_unit: object, brocadcasting unit
 //	_text: string, text to broadcast
@@ -1106,7 +1075,7 @@ MCC_fnc_groupchat =
 
 //==================================================================MCC_fnc_moveToPos======================================================================================
 // move an object to a new location
-// Example: [[[netid _unit,_unit],_pos], "MCC_fnc_moveToPos", true, false] spawn BIS_fnc_MP;
+// Example: [[[netid _unit,_unit],_pos], "MCC_fnc_moveToPos", true, false] spawn MCC_fnc_remoteExec;
 // Params: 
 //	_unit: object, brocadcasting unit
 //	_pos: array, position

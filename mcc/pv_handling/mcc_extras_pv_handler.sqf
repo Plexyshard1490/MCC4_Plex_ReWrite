@@ -29,7 +29,7 @@ if (isServer) then
 {	
 //===================================================================MCC_fnc_highCommand======================================================================================
 // Create a suiside bombers  that will randomly run ove and explode himself on target faction's units
-//Example:[[netID _commander,_commander],_action],"MCC_fnc_highCommand",true,false] call BIS_fnc_MP;
+//Example:[[netID _commander,_commander],_action],"MCC_fnc_highCommand",true,false] call MCC_fnc_remoteExec;
 // Params: 
 // 	_commander: object, unit that is the commander
 // 	_action: integer, 0 - make new commander, 1 - remove all groups from the commander, 2 - add group to the commander
@@ -38,7 +38,7 @@ if (isServer) then
 	
 //===================================================================MCC_fnc_boxGenerator======================================================================================
 // Create an empty box with the given weapons and items
-// Example: [[_pos, _dir, _weapons, _magazines,_items,_rucks],"MCC_fnc_boxGenerator",true,false] spawn BIS_fnc_MP;
+// Example: [[_pos, _dir, _weapons, _magazines,_items,_rucks],"MCC_fnc_boxGenerator",true,false] spawn MCC_fnc_remoteExec;
 // Params: 
 // 	_pos: array position
 // 	_dir: number - direction
@@ -51,7 +51,7 @@ if (isServer) then
 	
 //===================================================================MCC_fnc_artillery======================================================================================
 // Create an artillery shell above the location
-// Example:[[_pos, shelltype, shellspread, nshell,simulate],"MCC_fnc_artillery",true,false] spawn BIS_fnc_MP;
+// Example:[[_pos, shelltype, shellspread, nshell,simulate],"MCC_fnc_artillery",true,false] spawn MCC_fnc_remoteExec;
 // Params: 
 // 	_pos: array, position
 // 	shelltype: string, vehicleClass ["GrenadeHand","Sh_120_HE","Cluster_120mm_AMOS","Mo_cluster_AP","Mine_120mm_AMOS_range","Sh_120mm_AMOS_LG","Sh_82mm_AMOS","Fire_82mm_AMOS","Smoke_120mm_AMOS_White","Smoke_82mm_AMOS_White","G_40mm_SmokeGreen","G_40mm_SmokeRed","F_40mm_White""F_40mm_Green","F_40mm_Red"];
@@ -63,7 +63,7 @@ if (isServer) then
 
 //===================================================================MCC_fnc_evacMove======================================================================================
 // Move a vehicle across selected WP
-// Example:[[[wp1,wp2,wp3], flyInHight, insertion, [netid vehicle,vehicle]],"MCC_fnc_evacMove",true,false] spawn BIS_fnc_MP;
+// Example:[[[wp1,wp2,wp3], flyInHight, insertion, [netid vehicle,vehicle]],"MCC_fnc_evacMove",true,false] spawn MCC_fnc_remoteExec;
 // Params: 
 // 	[wp1,wp2,wp3]: array, waypoint positions
 // 	flyInHight: number, if evac is a chopper flight hight, set to 5000 for land or sea vehicle
@@ -77,7 +77,7 @@ if (isServer) then
 	
 //===================================================================MCC_fnc_evacDelete======================================================================================
 // Delete the given vehicle or it's driver
-// Example:[[option, evac],"MCC_fnc_evacDelete",true,false] spawn BIS_fnc_MP;
+// Example:[[option, evac],"MCC_fnc_evacDelete",true,false] spawn MCC_fnc_remoteExec;
 // Params: 
 // 	option number, 0- delete driver, 1 - spawn driver, 2- delete vehicle, driver and gunners. 
 // 	evac: object, the evac vehicle
@@ -90,7 +90,7 @@ if (isServer) then
 	
 //===================================================================MCC_fnc_evacSpawn======================================================================================
 // Spawn a vehicle with crew and gunners, mark it as an evac vehicle
-// Example:[[vehicleClass, position],"MCC_fnc_evacSpawn",true,false] spawn BIS_fnc_MP;
+// Example:[[vehicleClass, position],"MCC_fnc_evacSpawn",true,false] spawn MCC_fnc_remoteExec;
 // Params: 
 // 	vehicleClass: string, vehicleClass to spawn
 // 	position: array, spawn position
@@ -99,7 +99,7 @@ if (isServer) then
 	
 //===================================================================MCC_fnc_placeConvoy======================================================================================
 // Place a convoy up to 5 cars facing the direction stated with ot without an HVT
-// Example:[[vehicle1, vehicle2, vehicle3, vehicle4, vehicle5,start, heading, side,VIPcalss,VIPcar],'MCC_fnc_placeConvoy',true,false] spawn BIS_fnc_MP;
+// Example:[[vehicle1, vehicle2, vehicle3, vehicle4, vehicle5,start, heading, side,VIPcalss,VIPcar],'MCC_fnc_placeConvoy',true,false] spawn MCC_fnc_remoteExec;
 // Params: 
 // 	vehicle1, vehicle2, vehicle3, vehicle4, vehicle5: string, vehicle class leave "" to not spawn a vehicle
 // 	start: array, position, start location
@@ -112,7 +112,7 @@ if (isServer) then
 
 //===================================================================MCC_fnc_startConvoy======================================================================================
 // Make the convoy drive through the specific waypoints
-// Example:[[[wp1, wp2, wp3], isVIP],'MCC_fnc_startConvoy',true,false] call BIS_fnc_MP;
+// Example:[[[wp1, wp2, wp3], isVIP],'MCC_fnc_startConvoy',true,false] call MCC_fnc_remoteExec;
 // Params: 
 // 	[wp1, wp2, wp3]: array, waypoints positions 
 // 	isVIP: string, if = "0" no vip else there is a vip
@@ -121,7 +121,7 @@ if (isServer) then
 	
 //===================================================================MCC_fnc_mineSingle======================================================================================
 // Create a mine field
-//Example:[[IEDkind,IEDMarkerName,centerPos,minefieldSize],"MCC_fnc_mineSingle",true,false] call BIS_fnc_MP;
+//Example:[[IEDkind,IEDMarkerName,centerPos,minefieldSize],"MCC_fnc_mineSingle",true,false] call MCC_fnc_remoteExec;
 // Params: 
 // 	IEDkind: string, minefield type: "apv" - AP minefield with warining signs, "ap" - AP minefield without warining signs. "apbv" -  AP bouncing minefield with warining signs, "apb"-  AP bouncing minefield without warining signs, "atv" - AT minefield with warining signs, "at"-  AT minefield without warining signs
 //	IEDMarkerName: string, custom marker name for the minefield
@@ -132,7 +132,7 @@ if (isServer) then
 
 //===================================================================MCC_fnc_SBSingle======================================================================================
 // Create a suiside bombers  that will randomly run ove and explode himself on target faction's units
-//Example:[[pos,vehicleClass,explosionSize,explosionType,side,markerName],"MCC_fnc_SBSingle",true,false] call BIS_fnc_MP;
+//Example:[[pos,vehicleClass,explosionSize,explosionType,side,markerName],"MCC_fnc_SBSingle",true,false] call MCC_fnc_remoteExec;
 // Params: 
 // 	pos: array, armerd civilian position.
 //	vehicleClass: string, unit vehicle class

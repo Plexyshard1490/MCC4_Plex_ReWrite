@@ -51,15 +51,15 @@ if(_x isKindOf "Car") then
 		if (((_x distance _pos) < _killRadius) && (_random > 1))then	{
 			_x setVariable ["ace_sys_vehicledamage_enable", false];					
 			_x setdamage 0.7;
-			[[2,compile format ["objectFromNetId '%1' setHit ['wheel_1_1_steering', 1]", netid _x]], "MCC_fnc_globalExecute", _x, false] spawn BIS_fnc_MP;
-			[[2,compile format ["objectFromNetId '%1'  setHit ['wheel_2_1_steering', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-			[[2,compile format ["objectFromNetId '%1'  setHit ['motor', 1]", _x]], "MCC_fnc_globalExecute", netid _x, false] spawn BIS_fnc_MP;
-			[[2,compile format ["objectFromNetId '%1'  setHit ['glass1', 1]", _x]], "MCC_fnc_globalExecute",netid _x, false] spawn BIS_fnc_MP;
-			[[2,compile format ["objectFromNetId '%1'  setHit ['glass2', 1]", _x]], "MCC_fnc_globalExecute",netid _x, false] spawn BIS_fnc_MP;
-			[[2,compile format ["objectFromNetId '%1'  setHit ['glass3', 1]", _x]], "MCC_fnc_globalExecute",netid _x, false] spawn BIS_fnc_MP;
-			[[2,compile format ["objectFromNetId '%1'  setHit ['glass4', 1]", _x]], "MCC_fnc_globalExecute",netid _x, false] spawn BIS_fnc_MP;
-			[[2,compile format ["objectFromNetId '%1'  setHit ['glass5', 1]", _x]], "MCC_fnc_globalExecute",netid _x, false] spawn BIS_fnc_MP;
-			[[2,compile format ["objectFromNetId '%1'  setHit ['glass6', 1]", _x]], "MCC_fnc_globalExecute",netid _x, false] spawn BIS_fnc_MP;
+			[[2, "setVehicleHit", [netId _x, "wheel_1_1_steering", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+			[[2, "setVehicleHit", [netId _x, "wheel_2_1_steering", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+			[[2, "setVehicleHit", [netId _x, "motor", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+			[[2, "setVehicleHit", [netId _x, "glass1", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+			[[2, "setVehicleHit", [netId _x, "glass2", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+			[[2, "setVehicleHit", [netId _x, "glass3", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+			[[2, "setVehicleHit", [netId _x, "glass4", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+			[[2, "setVehicleHit", [netId _x, "glass5", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+			[[2, "setVehicleHit", [netId _x, "glass6", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
 			if (isServer) then {_effect = "test_EmptyObjectForFireBig" createVehicle (getpos _x); _effect attachto [_x,[0,0,0]];};
 			sleep 15;
 			_x setdamage 1; 
@@ -67,15 +67,15 @@ if(_x isKindOf "Car") then
 		} else	{
 					_x setVariable ["ace_sys_vehicledamage_enable", false];
 					_x setdamage 0.4;
-					[[2,compile format ["objectFromNetId '%1' setHit ['wheel_1_1_steering', 1]", netid _x]], "MCC_fnc_globalExecute", _x, false] spawn BIS_fnc_MP;
-					[[2,compile format ["objectFromNetId '%1'  setHit ['wheel_2_1_steering', 1]", _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-					[[2,compile format ["objectFromNetId '%1' setHit ['motor', 0.7]", _x]], "MCC_fnc_globalExecute",netid _x, false] spawn BIS_fnc_MP;
-					[[2,compile format ["objectFromNetId '%1' setHit ['glass1', 1]", _x]], "MCC_fnc_globalExecute",netid _x, false] spawn BIS_fnc_MP;
-					[[2,compile format ["objectFromNetId '%1' setHit ['glass2', 1]", _x]], "MCC_fnc_globalExecute",netid _x, false] spawn BIS_fnc_MP;
-					[[2,compile format ["objectFromNetId '%1' setHit ['glass3', 1]", _x]], "MCC_fnc_globalExecute",netid _x, false] spawn BIS_fnc_MP;
-					[[2,compile format ["objectFromNetId '%1' setHit ['glass4', 1]", _x]], "MCC_fnc_globalExecute",netid _x, false] spawn BIS_fnc_MP;
-					[[2,compile format ["objectFromNetId '%1' setHit ['glass5', 1]", _x]], "MCC_fnc_globalExecute",netid _x, false] spawn BIS_fnc_MP;
-					[[2,compile format ["objectFromNetId '%1' setHit ['glass6', 1]", _x]], "MCC_fnc_globalExecute",netid _x, false] spawn BIS_fnc_MP;
+					[[2, "setVehicleHit", [netId _x, "wheel_1_1_steering", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "wheel_2_1_steering", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "motor", 0.7]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "glass1", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "glass2", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "glass3", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "glass4", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "glass5", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+					[[2, "setVehicleHit", [netId _x, "glass6", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
 				}
 	};
 		
@@ -84,9 +84,9 @@ if(_x isKindOf "Tank") then
 		if (((_x distance _pos) < _killRadius) && (_random > 1))then	{
 				_x setVariable ["ace_sys_vehicledamage_enable", false];					
 				_x setdamage 0.7;
-				[[2,compile format ["objectFromNetId '%1' setHit ['Ltrack', 1]",netid _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-				[[2,compile format ["objectFromNetId '%1' setHit ['Rtrack', 1]",netid _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
-				[[2,compile format ["objectFromNetId '%1' setHit ['motor', 1]",netid _x]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+				[[2, "setVehicleHit", [netId _x, "Ltrack", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+				[[2, "setVehicleHit", [netId _x, "Rtrack", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
+				[[2, "setVehicleHit", [netId _x, "motor", 1]], "MCC_fnc_globalExecute", _x, false] call MCC_fnc_remoteExec;
 				if (isServer) then {_effect = "test_EmptyObjectForFireBig" createVehicle (getpos _x); _effect attachto [_x,[0,0,0]];};
 				sleep 15;
 				_x setdamage 1; 
@@ -94,4 +94,3 @@ if(_x isKindOf "Tank") then
 			};
 	};
 } forEach _targetUnits;
-

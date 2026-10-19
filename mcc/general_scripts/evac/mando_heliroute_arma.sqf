@@ -127,7 +127,7 @@ if (_height == 5000) then {								//We got a vehicle
 		} else	{
 			//If it's a smoke landing
 			if (_landing == 5) then {
-				[[_heli, "Waiting for smoke signal to land", false],"MCC_fnc_groupchat",true,false] spawn BIS_fnc_MP;    
+				[[_heli, "Waiting for smoke signal to land", false],"MCC_fnc_groupchat",true,false] call MCC_fnc_remoteExec;
 				_nearSmokes = []; 
 				while {(count _nearSmokes < 1)} do {
 					_nearSmokes = (getPos _heli) nearObjects ["SmokeShell", 200];
@@ -209,7 +209,7 @@ if (_height == 5000) then {								//We got a vehicle
 				  };
 				  Sleep 0.01;
 			   }; 
-				[[[netid _heli,_heli], "Golf 1 touchdown",false], "MCC_fnc_groupchat", true, false] spawn BIS_fnc_MP;
+				[[[netid _heli,_heli], "Golf 1 touchdown",false], "MCC_fnc_groupchat", true, false] call MCC_fnc_remoteExec;
 			   for [{_i = 0},{_i < 100},{_i = _i + 1}] do
 			   {
 				  _heli setVelocity [0,0,-0.1];
@@ -233,7 +233,7 @@ if (_height == 5000) then {								//We got a vehicle
 				_heli setVelocity [0,0,0];
 				_heli flyinHeight 5;
 				waituntil {((getposatl _heli) select 2) < 6};
-				[[[netid _heli,_heli], "Golf 1 in position, clear for helocasting",false], "MCC_fnc_groupchat", true, false] spawn BIS_fnc_MP;
+				[[[netid _heli,_heli], "Golf 1 in position, clear for helocasting",false], "MCC_fnc_groupchat", true, false] call MCC_fnc_remoteExec;
 				_pilot action ["autoHover", _heli];	
 				//[_heli, driver _heli] spawn ace_sys_fastroping_fnc_deployFastropes;
 				};
@@ -260,7 +260,7 @@ if (_height == 5000) then {								//We got a vehicle
 					  };
 					  Sleep 0.01;
 				   }; 
-				[[[netid _heli,_heli], "Golf 1 touchdown",false], "MCC_fnc_groupchat", true, false] spawn BIS_fnc_MP;
+				[[[netid _heli,_heli], "Golf 1 touchdown",false], "MCC_fnc_groupchat", true, false] call MCC_fnc_remoteExec;
 				_heli setVariable ["mando_heliroute", "waiting"];
 				_pilot action ["ENGINEOFF", _heli];
 				for [{_i = 0},{_i < 100},{_i = _i + 1}] do

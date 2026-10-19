@@ -27,13 +27,6 @@ CP_westTickets = 200;
 publicVariable "CP_eastTickets";
 publicVariable "CP_westTickets";
 
-/*
-//Build starting spawn points
-[[getpos spawn_west, getdir spawn_west, "west", "HQ-BASE", false] , "CP_fnc_buildSpawnPoint", false, false] spawn BIS_fnc_MP;
-[[getpos spawn_east, getdir spawn_east,"east", "HQ-BASE", false] , "CP_fnc_buildSpawnPoint", false, false] spawn BIS_fnc_MP;
-*/
-
-
 //---------------------------------------------
 //		Create custom groups
 //---------------------------------------------
@@ -659,5 +652,4 @@ publicvariable "CP_pilotWeaponWest";
 
 CP_pilotWeaponEast = call compileFinal str	[[0,"SMG_02_F",["30Rnd_9x21_Mag",6]]]; 
 publicvariable "CP_pilotWeaponEast";
-
 

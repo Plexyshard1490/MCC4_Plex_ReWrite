@@ -24,7 +24,7 @@ switch (_case) do
 			Mtext = ctrlText (_dlg displayCtrl MCC_MARKER_TEXT);
 			hint "Left click on the map to set a marker";
 			onMapSingleClick " 	hint 'marker added.'; 
-								[[Mcase, Mcolor, Msize, Mshape, Mbrush, Mtype, Mtext, _pos],'MCC_fnc_makeMarker',true,false] spawn BIS_fnc_MP;
+								[[Mcase, Mcolor, Msize, Mshape, Mbrush, Mtype, Mtext, _pos],'MCC_fnc_makeMarker',true,false] spawn MCC_fnc_remoteExec;
 								onMapSingleClick """";";
 		};
 	
@@ -49,6 +49,6 @@ switch (_case) do
 		Mtype = (MCC_markerarray select (lbCurSel MCC_MARKER_TYPE)) select 2;
 		Mtext = ctrlText (_dlg displayCtrl MCC_MARKER_TEXT);
 		_pos = [];
-		[[Mcase, Mcolor, Msize, Mshape, Mbrush, Mtype, Mtext, _pos],"MCC_fnc_makeMarker",true,false] spawn BIS_fnc_MP;
+		[[Mcase, Mcolor, Msize, Mshape, Mbrush, Mtype, Mtext, _pos],"MCC_fnc_makeMarker",true,false] call MCC_fnc_remoteExec;
 	   };
 	};

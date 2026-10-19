@@ -46,7 +46,7 @@ MCC_MWcreateHostage =
 						",
 						MCC_path
 						];
-		[[[netID _unit,_unit], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+		[[[netID _unit,_unit], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 		_unit;
 	};	
 
@@ -94,7 +94,7 @@ if (_isCQB) then
 				_unitPlaced = true; 
 				
 				//Lets spawn some body guards
-				[[getpos _unit,30,0,2,_faction,str _side],"MCC_fnc_garrison",false,false] spawn BIS_fnc_MP;
+				[[getpos _unit,30,0,2,_faction,str _side],"MCC_fnc_garrison",false,false] call MCC_fnc_remoteExec;
 			};
 		};
 	}

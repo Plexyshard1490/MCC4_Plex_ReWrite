@@ -23,7 +23,7 @@ _wpBehavior = ["UNCHANGED", "CARELESS", "SAFE", "AWARE", "COMBAT", "STEALTH"] se
 } foreach MCC_GroupGenGroupSelected;
 
 //Call the server to handle WP
-[[_action,MCC_ConsoleWPpos,[_wpType,"NO CHANGE",_wpFormation,_wpSpeed,_wpBehavior,"true","",0],_groups],"MCC_fnc_manageWp", false, false] spawn BIS_fnc_MP;	
+[[_action,MCC_ConsoleWPpos,[_wpType,"NO CHANGE",_wpFormation,_wpSpeed,_wpBehavior,"true","",0],_groups],"MCC_fnc_manageWp", false, false] call MCC_fnc_remoteExec;
 	
 ctrlShow [MCC_GroupGenWPBckgr_IDC,false];
 ctrlShow [MCC_GroupGenWPCombo_IDC,false];

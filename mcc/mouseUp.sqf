@@ -25,7 +25,7 @@ if (mcc_missionmaker == (name player)) then
 				{
 					hint "Ambush Captured."; 
 					MCC_capture_var=MCC_capture_var + FORMAT ["
-					[[%1 , '%2' , '%3', %4, %5, %6, %7, %8],'MCC_fnc_ambushSingle',true,false] call BIS_fnc_MP;
+					[[%1 , '%2' , '%3', %4, %5, %6, %7, %8],'MCC_fnc_ambushSingle',true,false] call MCC_fnc_remoteExec;
 					_eib_marker = createMarkerlocal [%4 select 0 ,%1];
 					_eib_marker setMarkerTypelocal 'mil_ambush';
 					_eib_marker setMarkerColorlocal 'ColorRed';
@@ -50,7 +50,7 @@ if (mcc_missionmaker == (name player)) then
 					_eib_marker setMarkerTextlocal (IedName select 0);
 					_eib_marker setMarkerdirlocal IEDDir-90;
 					mcc_safe=mcc_safe + FORMAT ["
-					[[%1 , '%2' , '%3', %4, %5, %6, %7, %8],'MCC_fnc_ambushSingle',false,false] call BIS_fnc_MP;
+					[[%1 , '%2' , '%3', %4, %5, %6, %7, %8],'MCC_fnc_ambushSingle',false,false] call MCC_fnc_remoteExec;
 					sleep 1;
 					_eib_marker = createMarkerlocal [%4 select 0 ,%1];
 					_eib_marker setMarkerTypelocal 'mil_ambush';
@@ -67,7 +67,7 @@ if (mcc_missionmaker == (name player)) then
 					, MCC_IEDisSpotter
 					, iedside
 					];
-				[[MCC_pointA , IEDAmbushspawnname,mcc_sidename, IedName, IEDDir, MCC_pointB, MCC_IEDisSpotter, iedside],"MCC_fnc_ambushSingle",false,false] call BIS_fnc_MP;
+				[[MCC_pointA , IEDAmbushspawnname,mcc_sidename, IedName, IEDDir, MCC_pointB, MCC_IEDisSpotter, iedside],"MCC_fnc_ambushSingle",false,false] call MCC_fnc_remoteExec;
 				};
 			MCC_ambushPlacing = false; 							
 		};
@@ -81,7 +81,7 @@ if (mcc_missionmaker == (name player)) then
 			MCC_IEDLineCount = MCC_IEDLineCount +1;
 			[MCC_pointA,MCC_pointB,MCC_IEDLineCount] call MCC_fnc_drawLine;
 			mcc_safe=mcc_safe + FORMAT ["
-			[[%1,%2,%3],'MCC_fnc_iedSync',true,false] call BIS_fnc_MP;
+			[[%1,%2,%3],'MCC_fnc_iedSync',true,false] call MCC_fnc_remoteExec;
 			sleep 2;
 			[%1,%2,%3] call MCC_fnc_drawLine;
 			"							 
@@ -89,7 +89,7 @@ if (mcc_missionmaker == (name player)) then
 			, MCC_pointB
 			, MCC_IEDLineCount
 			];
-			[[MCC_pointA , MCC_pointB, MCC_IEDLineCount],"MCC_fnc_iedSync",true,false] call BIS_fnc_MP;
+			[[MCC_pointA , MCC_pointB, MCC_IEDLineCount],"MCC_fnc_iedSync",true,false] call MCC_fnc_remoteExec;
 			};
 		};
 	};

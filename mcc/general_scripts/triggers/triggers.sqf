@@ -39,8 +39,8 @@ switch (_type) do
 		_activate 	= MCC_musicActivateby_array select (lbCurSel MCC_TRIGGERS_ACTIVATE);
 		_cond 		= MCC_musicCond_array select (lbCurSel MCC_TRIGGERS_CONDITION);
 		_text 		= ctrlText (_dlg displayCtrl MCC_TRIGGERS_NAME);
-		_timeMin	= call compile (ctrlText (_dlg displayCtrl MCC_TRIGGERS_TIME_MIN));
-		_timeMax	= call compile (ctrlText (_dlg displayCtrl MCC_TRIGGERS_TIME_MAX));
+		_timeMin	= parseNumber (ctrlText (_dlg displayCtrl MCC_TRIGGERS_TIME_MIN));
+		_timeMax	= parseNumber (ctrlText (_dlg displayCtrl MCC_TRIGGERS_TIME_MAX));
 		_stateCond	= (ctrlText (_dlg displayCtrl MCC_TRIGGERS_STAT_COND));
 		_stateDiac	= (ctrlText (_dlg displayCtrl MCC_TRIGGERS_STAT_DEACTIVE));
 		MCC_capture_var = "";

@@ -57,7 +57,7 @@ if (mcc_missionmaker == (name player)) then
 			if (MCC_capture_state) then	{
 				hint "Air support captured."; 
 				MCC_capture_var=MCC_capture_var + FORMAT ['
-					[[%1, %2 , %3, %4, %5, %6],"MCC_fnc_airDrop",true,false] spawn BIS_fnc_MP;
+					[[%1, %2 , %3, %4, %5, %6],"MCC_fnc_airDrop",true,false] spawn MCC_fnc_remoteExec;
 					'	
 					,_ammount
 					,MCC_spawnkind
@@ -67,7 +67,7 @@ if (mcc_missionmaker == (name player)) then
 					,_away];
 				} else 	{
 					hint "Air support incomming."; 
-					[[_ammount, MCC_spawnkind , getmarkerpos _marker, MCC_planeType, _spawn,_away],"MCC_fnc_airDrop",true,false] spawn BIS_fnc_MP;
+					[[_ammount, MCC_spawnkind , getmarkerpos _marker, MCC_planeType, _spawn,_away],"MCC_fnc_airDrop",true,false] call MCC_fnc_remoteExec;
 					};
 					
 			MCC_CASrequestMarker = false;			//Wait and delete the marker
@@ -134,7 +134,7 @@ if (MCC_brush_drawing && _pressed==0) then //Brush Drawing
 			_pos = getMarkerPos  _marker;
 			if (!isnil "_marker") then {deletemarkerlocal _marker};	
 			MCC_brush_drawing = false; 
-			[[Mcase, Mcolor, _size, Mshape, Mbrush, Mtype, Mtext, _pos],"MCC_fnc_makeMarker",true,false] spawn BIS_fnc_MP;
+			[[Mcase, Mcolor, _size, Mshape, Mbrush, Mtype, Mtext, _pos],"MCC_fnc_makeMarker",true,false] call MCC_fnc_remoteExec;
 		};
 
 			
@@ -191,11 +191,11 @@ if (MCC_delete_drawing && _pressed==0) then //Delete Drawing
 			MCC_delete_drawing = false; 
 			
 			mcc_safe=mcc_safe + FORMAT ['
-									[[%1, %2 select 0, %3],"MCC_fnc_deleteBrush",true,false] spawn BIS_fnc_MP;
+									[[%1, %2 select 0, %3],"MCC_fnc_deleteBrush",true,false] spawn MCC_fnc_remoteExec;
 									sleep 1;'								 
 									, _pos
 									, _size
 									, _type
 									];
-			[[_pos, _size select 0, _type],"MCC_fnc_deleteBrush",true,false] spawn BIS_fnc_MP;
+			[[_pos, _size select 0, _type],"MCC_fnc_deleteBrush",true,false] call MCC_fnc_remoteExec;
 		};

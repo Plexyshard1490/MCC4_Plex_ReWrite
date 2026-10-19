@@ -25,14 +25,14 @@ if !mcc_isloading then	{
 			hint "click on the map"; 
 			onMapSingleClick " 	hint ""Group Spawned."";
 							mcc_safe = mcc_safe + FORMAT ['
-										[[%1 , %2, %3, %4],""MCC_fnc_groupSpawn"",true,false] spawn BIS_fnc_MP;
+										[[%1 , %2, %3, %4],""MCC_fnc_groupSpawn"",true,false] spawn MCC_fnc_remoteExec;
 										sleep 1;'								 
 										, _pos
 										, MCC_groupGenCurrenGroupArray
 										, MCC_groupGenGroupcount
 										, mcc_hc
 										];
-							[[_pos, MCC_groupGenCurrenGroupArray, MCC_groupGenGroupcount, mcc_hc],'MCC_fnc_groupSpawn',true,false] spawn BIS_fnc_MP;
+							[[_pos, MCC_groupGenCurrenGroupArray, MCC_groupGenGroupcount, mcc_hc],'MCC_fnc_groupSpawn',true,false] spawn MCC_fnc_remoteExec;
 							onMapSingleClick """";";
 			_nul=[MCC_groupGenGroupStatus] execVM MCC_path + "mcc\general_scripts\groupGen\group_manage.sqf";	//Refresh the group WP
 		};
@@ -52,7 +52,7 @@ if !mcc_isloading then	{
 			MCC_WPgenMapClick = false; 	
 			hint "click on the map"; 
 				onMapSingleClick " 	hint ""WP Added."";
-									[[0,_pos, MCC_WpGenarray, [MCC_groupGenGroupWP]],'MCC_fnc_manageWp',true,false] call BIS_fnc_MP;
+									[[0,_pos, MCC_WpGenarray, [MCC_groupGenGroupWP]],'MCC_fnc_manageWp',true,false] call MCC_fnc_remoteExec;
 									MCC_WPgenMapClick = true; 	
 									onMapSingleClick """";";	
 			waituntil {MCC_WPgenMapClick}; 
@@ -66,7 +66,7 @@ if !mcc_isloading then	{
 			MCC_groupGenGroupWP = MCC_groupGenGroupArray select (lbCurSel MCC_GroupGenGroups_IDD);
 			
 			hint "WP Cleared";
-			[[2,[],[],[MCC_groupGenGroupWP]],'MCC_fnc_manageWp',true,false] call BIS_fnc_MP;
+			[[2,[],[],[MCC_groupGenGroupWP]],'MCC_fnc_manageWp',true,false] call MCC_fnc_remoteExec;
 			sleep 1; 
 			_nul=[MCC_groupGenGroupStatus] execVM MCC_path + "mcc\general_scripts\groupGen\group_manage.sqf";	//Refresh the group WP
 			};

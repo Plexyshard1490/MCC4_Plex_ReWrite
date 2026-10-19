@@ -20,9 +20,9 @@ _ar = [
 
 // Send data over the network, or when on server, execute directly
 if (isServer) then {
-	[_ar,"mcc_fnc_login",false,false] spawn BIS_fnc_MP;
+	[_ar,"mcc_fnc_login",false,false] call MCC_fnc_remoteExec;
 	} else {
-		[_ar,"mcc_fnc_login",true,false] spawn BIS_fnc_MP;
+		[_ar,"mcc_fnc_login",true,false] call MCC_fnc_remoteExec;
 		};
 closeDialog 0;
 _null = [] execVM MCC_path + 'mcc\dialogs\mcc_PopupMenu.sqf';

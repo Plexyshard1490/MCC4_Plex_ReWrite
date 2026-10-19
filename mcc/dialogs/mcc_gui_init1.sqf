@@ -233,7 +233,7 @@ while {dialog} do
 	if (isnil "mcc_fps_running") then {mcc_fps_running = false}; 
 	if !(mcc_fps_running) then 
 	{
-		[[1],"MCC_fnc_FPS",true,false] spawn BIS_fnc_MP;
+		[[1],"MCC_fnc_FPS",true,false] call MCC_fnc_remoteExec;
 		sleep 0.5;
 	};
 		

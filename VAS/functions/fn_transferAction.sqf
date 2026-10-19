@@ -19,5 +19,5 @@ if(_targetUser == "") exitWith {hint localize "STR_VAS_Transfer_BadUnit"};
 {if(str(_x) == _targetUser) exitWith {_targetUser = _x;}} foreach playableUnits; //Fetch the users actual object.
 if(isNull _targetUser) exitWith {hint localize "STR_VAS_Transfer_BadUnit"};
 
-[[name player,VAS_Transfer_Loadout],"VAS_fnc_transferNetwork",_targetUser,false] spawn BIS_fnc_MP;
+[[name player,VAS_Transfer_Loadout],"VAS_fnc_transferNetwork",_targetUser,false] call MCC_fnc_remoteExec;
 closeDialog 0;

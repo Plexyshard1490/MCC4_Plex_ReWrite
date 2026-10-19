@@ -12,11 +12,21 @@
 	
 	STR_VAS_Transfer_Request
 */
-private["_from"];
-_from = [_this,0,"",[""]] call BIS_fnc_param;
-_loadout = [_this,1,[],[[]]] call BIS_fnc_param;
-if(_from == "") exitWith {};
-if(count _loadout == 0) exitWith {};
+params [
+	["_from", "", [""]],
+	["_loadout", [], [[]]]
+];
+if (_from isEqualTo "") exitWith {};
+if (_loadout isEqualTo []) exitWith {};
+
+private _authorized = true;
+if (remoteExecutedOwner > 2) then {
+	private _sender = allPlayers select {owner _x == remoteExecutedOwner};
+	_authorized = !(_sender isEqualTo []) && {name (_sender select 0) isEqualTo _from};
+};
+if (!_authorized) exitWith {
+	diag_log format ["VAS: Rejected loadout transfer from owner %1.", remoteExecutedOwner];
+};
 
 if(!createDialog "VAS_prompt") exitWith {hint format["%1 tried to send you a saved loadout but we couldn't open the menu.",_from];};
 disableSerialization;

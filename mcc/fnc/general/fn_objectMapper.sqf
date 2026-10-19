@@ -78,7 +78,7 @@ for "_i" from 0 to ((count _objs) - 1) do
 		_newObj setPos _newPos;
 		if (!isNil "_fuel") then {_newObj setFuel _fuel};
 		if (!isNil "_damage") then {_newObj setDamage _damage};
-		if (!isNil "_vehicleinit") then {[[[netID _newObj,_newObj],_vehicleinit], "MCC_fnc_setVehicleInit", false, true] spawn BIS_fnc_MP};
+		if (!isNil "_vehicleinit") then {[[[netID _newObj,_newObj],_vehicleinit], "MCC_fnc_setVehicleInit", false, false] call MCC_fnc_remoteExec;};
 		if (!isNil "_vehicleTarget") then {_target = _newObj};
 
 		_newObjs = _newObjs + [_newObj];

@@ -7,22 +7,7 @@
 								];									
 			};
 
-[[2, {
-		if ((count MCC_lastSpawn)>0) then
-		{
-			if (typeName (MCC_lastSpawn select ((count MCC_lastSpawn)-1)) == "ARRAY") then
-			{
-				deleteVehicle ((MCC_lastSpawn select ((count MCC_lastSpawn)-1)) select 0);
-				{deleteVehicle _x} forEach ((MCC_lastSpawn select ((count MCC_lastSpawn)-1)) select 1);
-			}	
-			else	
-			{
-				deleteVehicle (MCC_lastSpawn select ((count MCC_lastSpawn)-1));
-			};
-			
-			MCC_lastSpawn resize ((count MCC_lastSpawn)-1); 
-		};
-	}] , "MCC_fnc_globalExecute", true, false] call BIS_fnc_MP;
+[[2, "deleteLastSpawn", []], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 	
  
  

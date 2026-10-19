@@ -27,7 +27,7 @@ switch (_type) do
 			publicVariable "MCC_Lightnings";
 			
 			if ((count _weather) > 5) then {MCC_Fog =(_weather select 5);publicVariable "MCC_Fog"};
-			[[_weather],"MCC_fnc_setWeather",true,false] spawn BIS_fnc_MP;
+			[[_weather],"MCC_fnc_setWeather",true,false] call MCC_fnc_remoteExec;
 		};
 	
 	    case 3:	//Set time
@@ -50,7 +50,7 @@ switch (_type) do
 			MCC_date=date;
 			MCC_date=[MCC_date select 0, month, day, hour, minute];
 			publicVariable "MCC_date";
-			[[MCC_date],"MCC_fnc_setTime",true,false] spawn BIS_fnc_MP;
+			[[MCC_date],"MCC_fnc_setTime",true,false] call MCC_fnc_remoteExec;
 		};
 	};
 

@@ -50,7 +50,6 @@ switch (_type) do
 			if (MCC_capture_state) then	{
 				MCC_capture_var = MCC_capture_var + FORMAT ['MCC_CASConsoleArray set [count MCC_CASConsoleArray,[%1, %2]];
 					publicVariable "MCC_CASConsoleArray";
-					[[2,{["MCCNotifications",["%4 CAS available","%3data\ammo_icon.paa",""]] call bis_fnc_showNotification;}], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
 					'
 					,MCC_spawnkind
 					,MCC_planeType
@@ -65,7 +64,7 @@ switch (_type) do
 					];
 					MCC_CASConsoleArray set [count MCC_CASConsoleArray,[MCC_spawnkind, MCC_planeType]]; 
 					publicVariable "MCC_CASConsoleArray"; 
-					[[2,compile format ['["MCCNotifications",["%1 CAS available","%2data\ammo_icon.paa",""]] call bis_fnc_showNotification;',MCC_spawnkind select 0,MCC_path]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+					[[2, "showNotification", ["MCCNotifications", [format ["%1 CAS available", MCC_spawnkind select 0], format ["%2data\ammo_icon.paa", MCC_spawnkind select 0, MCC_path], ""]]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 					//["MCCNotifications",[format ['"%1 CAS available","%2data\ammo_icon.paa"',MCC_spawnkind select 0,MCC_path],""]] call bis_fnc_showNotification;
 					};
 		};

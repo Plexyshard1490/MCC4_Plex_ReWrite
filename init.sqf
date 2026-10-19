@@ -548,25 +548,25 @@ if ( isServer ) then
 	_dummyGroup = creategroup civilian; 
 	_dummy = _dummyGroup createunit ["Logic", [0, 90, 90],[],0.5,"NONE"];	//Logic Server
 	_name = "server";
-	call compile (_name + " = _dummy");
+	missionNamespace setVariable [_name, _dummy];
 	publicVariable _name;
 	
 	//west
 	_dummy = _dummyGroup createunit ["SideBLUFOR_F", [0, 90, 90],[],0.5,"NONE"];	//Logic Server
 	_name = "MCC_sideWest";
-	call compile (_name + " = _dummy");
+	missionNamespace setVariable [_name, _dummy];
 	publicVariable _name;
 	
 	//East
 	_dummy = _dummyGroup createunit ["SideOPFOR_F", [0, 90, 90],[],0.5,"NONE"];	//Logic Server
 	_name = "MCC_sideEast";
-	call compile (_name + " = _dummy");
+	missionNamespace setVariable [_name, _dummy];
 	publicVariable _name;
 	
 	//Resistance
 	_dummy = _dummyGroup createunit ["SideResistance_F", [0, 90, 90],[],0.5,"NONE"];	//Logic Server
 	_name = "MCC_sideResistance";
-	call compile (_name + " = _dummy");
+	missionNamespace setVariable [_name, _dummy];
 	publicVariable _name;
 	
 	

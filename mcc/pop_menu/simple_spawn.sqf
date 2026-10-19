@@ -28,9 +28,9 @@ if ( ( (isServer) && ( (_loc == 0) || !(MCC_isHC) ) ) || ( (MCC_isLocalHC) && (_
 					if (!MCC_align3D) then {_dummy setpos _pos};
 					_unitspawned setformdir _dir; 
 					if (_name != "") then {
-						[[[netid _dummy,_dummy], _name], "MCC_fnc_setVehicleName", true, true] spawn BIS_fnc_MP;
+						[[[netid _dummy,_dummy], _name], "MCC_fnc_setVehicleName", true, true] call MCC_fnc_remoteExec;
 						};
-					[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+					[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 				};
 				
 				case "ANIMAL":	
@@ -43,9 +43,9 @@ if ( ( (isServer) && ( (_loc == 0) || !(MCC_isHC) ) ) || ( (MCC_isLocalHC) && (_
 					if (!MCC_align3D) then {_dummy setpos _pos};
 					_unitspawned setformdir _dir; 
 					if (_name != "") then {
-						[[[netid _dummy,_dummy], _name], "MCC_fnc_setVehicleName", true, true] spawn BIS_fnc_MP;
+						[[[netid _dummy,_dummy], _name], "MCC_fnc_setVehicleName", true, true] call MCC_fnc_remoteExec;
 						};
-					[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+					[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 				};
 				
 				case "VEHICLE":	
@@ -69,10 +69,10 @@ if ( ( (isServer) && ( (_loc == 0) || !(MCC_isHC) ) ) || ( (MCC_isLocalHC) && (_
 							_dummy = [_veh,_crew,_grp]; 
 		
 							if (_name != "") then {
-								[[[netid (_dummy select 0),(_dummy select 0)], _name], "MCC_fnc_setVehicleName", true, true] spawn BIS_fnc_MP;
+								[[[netid (_dummy select 0),(_dummy select 0)], _name], "MCC_fnc_setVehicleName", true, true] call MCC_fnc_remoteExec;
 								};
 							_init= _init +	FORMAT ["group _this setFormDir %1",_dir];
-							[[[netid (_dummy select 0),(_dummy select 0)], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+							[[[netid (_dummy select 0),(_dummy select 0)], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 						} else
 						{
 							if (!isnil "Object3D") then {waitUntil {_pos distance Object3D > 15}};
@@ -82,9 +82,9 @@ if ( ( (isServer) && ( (_loc == 0) || !(MCC_isHC) ) ) || ( (MCC_isLocalHC) && (_
 							sleep 0.01;
 							if (!MCC_align3D) then {_dummy setpos _pos};
 							if (_name != "") then {
-								[[[netid _dummy,_dummy], _name], "MCC_fnc_setVehicleName", true, true] spawn BIS_fnc_MP;
+								[[[netid _dummy,_dummy], _name], "MCC_fnc_setVehicleName", true, true] call MCC_fnc_remoteExec;
 								};
-							[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+							[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 						};
 				};
 				
@@ -96,9 +96,9 @@ if ( ( (isServer) && ( (_loc == 0) || !(MCC_isHC) ) ) || ( (MCC_isLocalHC) && (_
 					sleep 0.01;
 					if (!MCC_align3D) then {_dummy setpos _pos};
 					if (_name != "") then {
-						[[[netid _dummy,_dummy], _name], "MCC_fnc_setVehicleName", true, true] spawn BIS_fnc_MP;
+						[[[netid _dummy,_dummy], _name], "MCC_fnc_setVehicleName", true, true] call MCC_fnc_remoteExec;
 						};
-					[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+					[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 				};
 				
 				case "MINES":	
@@ -108,9 +108,9 @@ if ( ( (isServer) && ( (_loc == 0) || !(MCC_isHC) ) ) || ( (MCC_isLocalHC) && (_
 					_init = format ["%1;_this setdir %2;",_init,_dir];
 					sleep 0.01;
 					if (_name != "") then {
-						[[[netid _dummy,_dummy], _name], "MCC_fnc_setVehicleName", true, true] spawn BIS_fnc_MP;
+						[[[netid _dummy,_dummy], _name], "MCC_fnc_setVehicleName", true, true] call MCC_fnc_remoteExec;
 						}; 
-					[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+					[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 				};
 				
 				case "DOC":	

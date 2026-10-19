@@ -36,14 +36,14 @@ if !mcc_isloading then
 	if (MCC_capture_state) then
 		{
 		MCC_capture_var = MCC_capture_var + FORMAT ['
-							[[%1,[netid %2,%2]],"MCC_fnc_evacDelete",true,false] spawn BIS_fnc_MP;
+							[[%1,[netid %2,%2]],"MCC_fnc_evacDelete",true,false] spawn MCC_fnc_remoteExec;
 							'
 							,_type
 							,_evac
 							];
 		} else
 			{
-			[[_type,[netid _evac,_evac]],"MCC_fnc_evacDelete",true,false] spawn BIS_fnc_MP;
+			[[_type,[netid _evac,_evac]],"MCC_fnc_evacDelete",true,false] call MCC_fnc_remoteExec;
 			};
 	}	
 		else { player globalchat "Access Denied"};

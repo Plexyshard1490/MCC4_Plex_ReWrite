@@ -28,7 +28,7 @@ diag_log format["Cannon to fire: %1, Cannon avilable: %2",_cannons_to_fire, _can
 			_salvo = _this select 3;
 	
 			if (count MCC_bonCannons > 0) then {
-			[[[netid (MCC_bonCannons select (_cannon-1)),(MCC_bonCannons select (_cannon-1))], 0],"MCC_fnc_broadcast",true,false] spawn BIS_fnc_MP;
+			[[[netid (MCC_bonCannons select (_cannon-1)),(MCC_bonCannons select (_cannon-1))], 0],"MCC_fnc_broadcast",true,false] spawn MCC_fnc_remoteExec;
 
 			sleep 2;
 			[1, [_cannon,_splashpos]] execVM MCC_path+"mcc\general_scripts\artillery\bon_art.sqf";
@@ -48,10 +48,10 @@ diag_log format["Cannon to fire: %1, Cannon avilable: %2",_cannons_to_fire, _can
 			if (MCC_bonFire) then 
 				{
 					MCC_bonFire = false;
-					[[[netid _requestor,_requestor], "shoutS5"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP;
+					[[[netid _requestor,_requestor], "shoutS5"], "MCC_fnc_globalSay3D", true, false] spawn MCC_fnc_remoteExec;
 					sleep 2; 
 					//[playerSide,"HQ"] sideChat "Shot, Over";
-					[[[netid _requestor,_requestor], "shoutO5"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP;
+					[[[netid _requestor,_requestor], "shoutO5"], "MCC_fnc_globalSay3D", true, false] spawn MCC_fnc_remoteExec;
 				};
 			
 			for "_i" from 1 to _nrshells do {			//MCC stuff
@@ -64,10 +64,10 @@ diag_log format["Cannon to fire: %1, Cannon avilable: %2",_cannons_to_fire, _can
 			if (MCC_bonSplash) then 
 				{
 					MCC_bonSplash = false;
-					[[[netid _requestor,_requestor], "splashS6"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP;
+					[[[netid _requestor,_requestor], "splashS6"], "MCC_fnc_globalSay3D", true, false] spawn MCC_fnc_remoteExec;
 					sleep 2; 
 					//[playerSide,"HQ"] sideChat "Shot, Over";
-					[[[netid _requestor,_requestor], "splashO6"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP;
+					[[[netid _requestor,_requestor], "splashO6"], "MCC_fnc_globalSay3D", true, false] spawn MCC_fnc_remoteExec;
 				};
 				
 				_lasertarget = _requestor call arti_func_getLaser;

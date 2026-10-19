@@ -19,14 +19,14 @@ if (mcc_missionmaker == (name player)) then {
 						onMapSingleClick "	
 								MCC_START_WEST  = _pos;
 								publicVariable ""MCC_START_WEST"";
-								[[_pos, 0, 'west','HQ',false], 'CP_fnc_buildSpawnPoint', false, false] spawn BIS_fnc_MP;
+								[[_pos, 0, 'west','HQ',false], 'CP_fnc_buildSpawnPoint', false, false] spawn MCC_fnc_remoteExec;
 								onMapSingleClick """";
 								
-								[[], 'MCC_fnc_startLocations', true, false] spawn BIS_fnc_MP;
+								[[], 'MCC_fnc_startLocations', true, false] spawn MCC_fnc_remoteExec;
 								mcc_safe=mcc_safe + FORMAT [""
 															MCC_START_WEST  = %1;
 															publicVariable 'MCC_START_WEST';
-															[[MCC_START_WEST, 0, 'west','HQ',false], 'CP_fnc_buildSpawnPoint', false, false] spawn BIS_fnc_MP;
+															[[MCC_START_WEST, 0, 'west','HQ',false], 'CP_fnc_buildSpawnPoint', false, false] spawn MCC_fnc_remoteExec;
 															""							  
 															,MCC_START_WEST
 															];
@@ -40,14 +40,14 @@ if (mcc_missionmaker == (name player)) then {
 						onMapSingleClick "	
 								MCC_START_EAST  = _pos;
 								publicVariable ""MCC_START_EAST"";
-								[[_pos, 0, 'east','HQ',false], 'CP_fnc_buildSpawnPoint', false, false] spawn BIS_fnc_MP;
+								[[_pos, 0, 'east','HQ',false], 'CP_fnc_buildSpawnPoint', false, false] spawn MCC_fnc_remoteExec;
 								onMapSingleClick """";
 								
-								[[], 'MCC_fnc_startLocations', true, false] spawn BIS_fnc_MP;
+								[[], 'MCC_fnc_startLocations', true, false] spawn MCC_fnc_remoteExec;
 								mcc_safe=mcc_safe + FORMAT [""
 															MCC_START_EAST  = %1;
 															publicVariable 'MCC_START_EAST';
-															[[_pos, 0, 'east','HQ',false], 'CP_fnc_buildSpawnPoint', false, false] spawn BIS_fnc_MP;
+															[[_pos, 0, 'east','HQ',false], 'CP_fnc_buildSpawnPoint', false, false] spawn MCC_fnc_remoteExec;
 															""							  
 															,MCC_START_EAST
 															];
@@ -61,14 +61,14 @@ if (mcc_missionmaker == (name player)) then {
 						onMapSingleClick "	
 								MCC_START_GUER  = _pos;
 								publicVariable ""MCC_START_GUER"";
-								[[_pos, 0, 'RESISTANCE','HQ',false], 'CP_fnc_buildSpawnPoint', false, false] spawn BIS_fnc_MP;
+								[[_pos, 0, 'RESISTANCE','HQ',false], 'CP_fnc_buildSpawnPoint', false, false] spawn MCC_fnc_remoteExec;
 								onMapSingleClick """";
 								
-								[[], 'MCC_fnc_startLocations', true, false] spawn BIS_fnc_MP;
+								[[], 'MCC_fnc_startLocations', true, false] spawn MCC_fnc_remoteExec;
 								mcc_safe=mcc_safe + FORMAT [""
 															MCC_START_GUER  = %1;
 															publicVariable 'MCC_START_GUER';
-															[[_pos, 0, 'RESISTANCE','HQ',false], 'CP_fnc_buildSpawnPoint', false, false] spawn BIS_fnc_MP;
+															[[_pos, 0, 'RESISTANCE','HQ',false], 'CP_fnc_buildSpawnPoint', false, false] spawn MCC_fnc_remoteExec;
 															""							  
 															,MCC_START_GUER
 															];
@@ -84,7 +84,7 @@ if (mcc_missionmaker == (name player)) then {
 								publicVariable ""MCC_START_CIV"";
 								onMapSingleClick """";
 								
-								[[], 'MCC_fnc_startLocations', true, false] spawn BIS_fnc_MP;
+								[[], 'MCC_fnc_startLocations', true, false] spawn MCC_fnc_remoteExec;
 								mcc_safe=mcc_safe + FORMAT [""
 															MCC_START_CIV  = %1;
 															publicVariable 'MCC_START_GUER';
@@ -99,7 +99,7 @@ if (mcc_missionmaker == (name player)) then {
 					{ 
 						MCC_TRAINING = FALSE;
 						publicVariable "MCC_TRAINING";
-						[["Mission started, respawn is off"],'MCC_fnc_globalHint',true,true] spawn BIS_fnc_MP;
+						[["Mission started, respawn is off"],'MCC_fnc_globalHint',true,true] call MCC_fnc_remoteExec;
 						MCC_enable_respawn=false;
 					};
 					
@@ -119,10 +119,10 @@ if (mcc_missionmaker == (name player)) then {
 					{ 
 						hint "click on map inorder to place the FOB"; 
 						onMapSingleClick "	
-								[[_pos, 0, 'west' ,'FOB',true], 'CP_fnc_buildSpawnPoint', false, false] spawn BIS_fnc_MP;
+								[[_pos, 0, 'west' ,'FOB',true], 'CP_fnc_buildSpawnPoint', false, false] spawn MCC_fnc_remoteExec;
 								onMapSingleClick """";
 								mcc_safe=mcc_safe + FORMAT [""
-															[[%1, 0, 'west' ,'FOB',true], 'CP_fnc_buildSpawnPoint', false, false] spawn BIS_fnc_MP;
+															[[%1, 0, 'west' ,'FOB',true], 'CP_fnc_buildSpawnPoint', false, false] spawn MCC_fnc_remoteExec;
 															""							  
 															,_pos
 															];
@@ -134,10 +134,10 @@ if (mcc_missionmaker == (name player)) then {
 					{ 
 						hint "click on map inorder to place the FOB"; 
 						onMapSingleClick "	
-								[[_pos, 0, 'east' ,'FOB',true], 'CP_fnc_buildSpawnPoint', false, false] spawn BIS_fnc_MP;
+								[[_pos, 0, 'east' ,'FOB',true], 'CP_fnc_buildSpawnPoint', false, false] spawn MCC_fnc_remoteExec;
 								onMapSingleClick """";
 								mcc_safe=mcc_safe + FORMAT [""
-															[[%1, 0, 'east' ,'FOB',true], 'CP_fnc_buildSpawnPoint', false, false] spawn BIS_fnc_MP;
+															[[%1, 0, 'east' ,'FOB',true], 'CP_fnc_buildSpawnPoint', false, false] spawn MCC_fnc_remoteExec;
 															""							  
 															,_pos
 															];
@@ -149,10 +149,10 @@ if (mcc_missionmaker == (name player)) then {
 					{ 
 						hint "click on map inorder to place the FOB"; 
 						onMapSingleClick "	
-								[[_pos, 0, 'RESISTANCE' ,'FOB',true], 'CP_fnc_buildSpawnPoint', false, false] spawn BIS_fnc_MP;
+								[[_pos, 0, 'RESISTANCE' ,'FOB',true], 'CP_fnc_buildSpawnPoint', false, false] spawn MCC_fnc_remoteExec;
 								onMapSingleClick """";
 								mcc_safe=mcc_safe + FORMAT [""
-															[[%1, 0, 'RESISTANCE' ,'FOB',true], 'CP_fnc_buildSpawnPoint', false, false] spawn BIS_fnc_MP;
+															[[%1, 0, 'RESISTANCE' ,'FOB',true], 'CP_fnc_buildSpawnPoint', false, false] spawn MCC_fnc_remoteExec;
 															""							  
 															,_pos
 															];

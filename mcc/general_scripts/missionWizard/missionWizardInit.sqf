@@ -258,7 +258,7 @@ publicvariable "MCC_MWmissionsCenter";
 diag_log format ["MCC Mission Wizard center = %1", _missionCenter];
 
 //Create the marker
-[[1, "ColorRed",[_maxObjectivesDistance*3,_maxObjectivesDistance*3], "ELLIPSE", "Border", "Empty", FORMAT ["MCCMW_operationMarker_%1",["MCCMW_operationMarker",1] call bis_fnc_counter], _missionCenter],"MCC_fnc_makeMarker",true,false] spawn BIS_fnc_MP;
+[[1, "ColorRed",[_maxObjectivesDistance*3,_maxObjectivesDistance*3], "ELLIPSE", "Border", "Empty", FORMAT ["MCCMW_operationMarker_%1",["MCCMW_operationMarker",1] call bis_fnc_counter], _missionCenter],"MCC_fnc_makeMarker",true,false] call MCC_fnc_remoteExec;
 
 
 
@@ -303,32 +303,32 @@ for [{_x = 1},{_x <=3},{_x = _x+1}] do
 				if ((random 1)>0.5) then {_factionPlayer = faction player; _sidePlayer = side player} else {_factionPlayer = "CIV_F"; _sidePlayer = civilian};
 				
 				//Spawn a hostage on the server
-				[[_objPos, _isCQB, true, _side, _faction, _sidePlayer, _factionPlayer,_preciseMarkers], "MCC_fnc_MWObjectiveHVT", false, false] call BIS_fnc_MP;
+				[[_objPos, _isCQB, true, _side, _faction, _sidePlayer, _factionPlayer,_preciseMarkers], "MCC_fnc_MWObjectiveHVT", false, false] call MCC_fnc_remoteExec;
 			};
 			
 		  case "Kill HVT":		
 			{
-				[[_objPos, _isCQB, false, _side, _faction, _sidePlayer, faction player,_preciseMarkers], "MCC_fnc_MWObjectiveHVT", false, false] call BIS_fnc_MP;
+				[[_objPos, _isCQB, false, _side, _faction, _sidePlayer, faction player,_preciseMarkers], "MCC_fnc_MWObjectiveHVT", false, false] call MCC_fnc_remoteExec;
 			};
 			
 		  case "Destroy Object":		
 			{
-				[[_objPos, _isCQB, _side, _faction,_preciseMarkers], "MCC_fnc_MWObjectiveDestroy", false, false] call BIS_fnc_MP;
+				[[_objPos, _isCQB, _side, _faction,_preciseMarkers], "MCC_fnc_MWObjectiveDestroy", false, false] call MCC_fnc_remoteExec;
 			};
 			
 		  case "Aquire Intel":		
 			{
-				[[_objPos, _isCQB, _side, _faction,_preciseMarkers], "MCC_fnc_MWObjectiveIntel", false, false] call BIS_fnc_MP;
+				[[_objPos, _isCQB, _side, _faction,_preciseMarkers], "MCC_fnc_MWObjectiveIntel", false, false] call MCC_fnc_remoteExec;
 			};
 			
 		 case "Clear Area":		
 			{
-				[[_objPos, _isCQB,_side, _faction,_sidePlayer,_preciseMarkers], "MCC_fnc_MWObjectiveClear", false, false] call BIS_fnc_MP;
+				[[_objPos, _isCQB,_side, _faction,_sidePlayer,_preciseMarkers], "MCC_fnc_MWObjectiveClear", false, false] call MCC_fnc_remoteExec;
 			};
 			
 		 case "Disarm IED":		
 			{
-				[[_objPos, _isCQB,_side, _faction,_sidePlayer,_preciseMarkers], "MCC_fnc_MWObjectiveDisable", false, false] call BIS_fnc_MP;
+				[[_objPos, _isCQB,_side, _faction,_sidePlayer,_preciseMarkers], "MCC_fnc_MWObjectiveDisable", false, false] call MCC_fnc_remoteExec;
 			};
 		};
 		
@@ -344,7 +344,7 @@ for [{_x = 1},{_x <=3},{_x = _x+1}] do
 					case civilian: {_activate =  "CIV"; _cond = "CIV D"};
 				};
 			_alarm = "Land_Loudspeakers_F" createVehicle ([_objPos,1,100,10,0,10,0,[],[[-500,-500,0],[-500,-500,0]]] call BIS_fnc_findSafePos);
-			[["", getpos _alarm, 100, 100, _activate, _cond,"AlarmSfx",false],"MCC_fnc_MusicTrigger",true,false] spawn BIS_fnc_MP;
+			[["", getpos _alarm, 100, 100, _activate, _cond,"AlarmSfx",false],"MCC_fnc_MusicTrigger",true,false] call MCC_fnc_remoteExec;
 		};
 		
 		sleep 1;
@@ -364,13 +364,13 @@ for [{_x = 1},{_x <=3},{_x = _x+1}] do
 		// Is CQB
 		if (_isCQB) then 
 		{
-			[[_objPos,(_maxObjectivesDistance*0.5),0,(_totalEnemyUnits*0.008),_faction,str _side],"MCC_fnc_garrison",false,false] spawn BIS_fnc_MP;
+			[[_objPos,(_maxObjectivesDistance*0.5),0,(_totalEnemyUnits*0.008),_faction,str _side],"MCC_fnc_garrison",false,false] call MCC_fnc_remoteExec;
 		}; 
 		
 		// Is _isCiv
 		if (_isCiv) then 
 		{
-			[[_objPos,(_maxObjectivesDistance*0.5),1,(_totalEnemyUnits*0.008),"CIV_F","CIV"],"MCC_fnc_garrison",false,false] spawn BIS_fnc_MP;
+			[[_objPos,(_maxObjectivesDistance*0.5),1,(_totalEnemyUnits*0.008),"CIV_F","CIV"],"MCC_fnc_garrison",false,false] call MCC_fnc_remoteExec;
 		};
 		
 				
@@ -389,7 +389,7 @@ for [{_x = 1},{_x <=3},{_x = _x+1}] do
 					_objectType = (_unitsArray call BIS_fnc_selectRandom) select 0;
 					_pos = [[[_objPos,(_maxObjectivesDistance*0.7)]],["water","out"],{true}] call BIS_fnc_randomPos;
 					
-					[[_pos,_objectType,"large",floor (random 2),_sidePlayer,_name],"MCC_fnc_SBSingle",false,false] spawn BIS_fnc_MP;
+					[[_pos,_objectType,"large",floor (random 2),_sidePlayer,_name],"MCC_fnc_SBSingle",false,false] call MCC_fnc_remoteExec;
 						
 					//Debug
 					if (MW_debug) then 
@@ -418,7 +418,7 @@ for [{_x = 1},{_x <=3},{_x = _x+1}] do
 					_objectType = (_unitsArray call BIS_fnc_selectRandom) select 0;
 					_pos = [[[_objPos,(_maxObjectivesDistance*0.7)]],["water","out"],{true}] call BIS_fnc_randomPos;
 
-					[[_pos,_objectType,_sidePlayer,_name,random 360],"MCC_fnc_ACSingle",false,false] spawn BIS_fnc_MP;
+					[[_pos,_objectType,_sidePlayer,_name,random 360],"MCC_fnc_ACSingle",false,false] call MCC_fnc_remoteExec;
 						
 					//Debug
 					if (MW_debug) then 
@@ -459,7 +459,7 @@ for [{_x = 1},{_x <=3},{_x = _x+1}] do
 							_objectType = MCC_MWIED call BIS_fnc_selectRandom;
 						}; 
 
-						[[_x modeltoworld [3,2,0],_objectType,"large",floor (random 2),2,0,0,((random 25) + 15),_sidePlayer,_name,random 360,[],_side],"MCC_fnc_trapSingle",false,false] spawn BIS_fnc_MP;
+						[[_x modeltoworld [3,2,0],_objectType,"large",floor (random 2),2,0,0,((random 25) + 15),_sidePlayer,_name,random 360,[],_side],"MCC_fnc_trapSingle",false,false] call MCC_fnc_remoteExec;
 					
 						//Debug
 						if (MW_debug) then 
@@ -524,14 +524,14 @@ if (_vehicles && (random 1 > 0.5)) then
 //Artillery
 if (_artillery != 0) then
 {
-	[[(_totalEnemyUnits*0.2),_missionCenter,_maxObjectivesDistance,MCC_MWunitsArrayStatic,5,10,_side,_artillery],"MCC_fnc_MWSpawnStatic",false,false] spawn BIS_fnc_MP;
+	[[(_totalEnemyUnits*0.2),_missionCenter,_maxObjectivesDistance,MCC_MWunitsArrayStatic,5,10,_side,_artillery],"MCC_fnc_MWSpawnStatic",false,false] call MCC_fnc_remoteExec;
 	if (MW_debug) then {diag_log "Enemy's Artillery Spawned in main zone"};
 };
 
 //Static
 if (random 1 > 0.3) then
 {
-	[[(_totalEnemyUnits*0.2),_missionCenter,_maxObjectivesDistance,MCC_MWunitsArrayStatic,4,8,_side,999],"MCC_fnc_MWSpawnStatic",false,false] spawn BIS_fnc_MP;
+	[[(_totalEnemyUnits*0.2),_missionCenter,_maxObjectivesDistance,MCC_MWunitsArrayStatic,4,8,_side,999],"MCC_fnc_MWSpawnStatic",false,false] call MCC_fnc_remoteExec;
 	if (MW_debug) then {diag_log "Enemy's Static Weapons Spawned in main zone"};
 };
 
@@ -565,7 +565,7 @@ if (_isRoadblocks) then
 					//If no buildings around
 					if ((nearestBuilding _pos) distance _pos >30) then
 					{
-						[[_pos, _dir, _faction, _side],"MCC_fnc_buildRoadblock",false,false] spawn BIS_fnc_MP;
+						[[_pos, _dir, _faction, _side],"MCC_fnc_buildRoadblock",false,false] call MCC_fnc_remoteExec;
 					};
 				};
 			}; 
@@ -627,7 +627,7 @@ if (_isIED) then
 				};
 				
 				//Spawn the IED
-				[[_iedpos,_objectType,"large",floor (random 2),2,0,0,((random 25) + 15),_sidePlayer,_name,_dir,_groupArray,_side],"MCC_fnc_trapSingle",false,false] spawn BIS_fnc_MP;
+				[[_iedpos,_objectType,"large",floor (random 2),2,0,0,((random 25) + 15),_sidePlayer,_name,_dir,_groupArray,_side],"MCC_fnc_trapSingle",false,false] call MCC_fnc_remoteExec;
 			
 				//Debug
 				if (MW_debug) then 
@@ -657,7 +657,7 @@ if (_reinforcement in [1,2,3]) then
 		_cond set [_x, (_cond select (_x-1)) + 0.3];
 	};
 	
-	[[_reinforcement,_side,getpos _missionCenterTrigger, triggerArea _missionCenterTrigger, _cond,_zoneNumber,_faction,MW_debug,_totalEnemyUnits],"MCC_fnc_MWreinforcement",false,false] call BIS_fnc_MP;
+	[[_reinforcement,_side,getpos _missionCenterTrigger, triggerArea _missionCenterTrigger, _cond,_zoneNumber,_faction,MW_debug,_totalEnemyUnits],"MCC_fnc_MWreinforcement",false,false] call MCC_fnc_remoteExec;
 }; 
 
 MCC_MWMissions set [count MCC_MWMissions, _objectives]; 
@@ -680,7 +680,7 @@ if (_weatherChange) then
 	MCC_date	= [(MCC_date select 0) + floor (random 10 - random 10), floor ((random 12)+1)  ,  floor ((random 28)+1), _hour,  floor (random 60)];
 	publicVariable "MCC_date";
 		
-	[[MCC_date],"MCC_fnc_setTime",true,false] call BIS_fnc_MP;
+	[[MCC_date],"MCC_fnc_setTime",true,false] call MCC_fnc_remoteExec;
 
 
 	//------------------- Weather ---------------------------------------------------------------------------------
@@ -706,11 +706,11 @@ if (_weatherChange) then
 		publicVariable "MCC_Lightnings";
 		publicVariable "MCC_Fog";
 		
-		[[[MCC_Overcast, MCC_WindForce, MCC_Waves, MCC_Rain, MCC_Lightnings, MCC_Fog]],"MCC_fnc_setWeather",true,false] call BIS_fnc_MP;
+		[[[MCC_Overcast, MCC_WindForce, MCC_Waves, MCC_Rain, MCC_Lightnings, MCC_Fog]],"MCC_fnc_setWeather",true,false] call MCC_fnc_remoteExec;
 	}
 	else
 	{
-		[[[MCC_Overcast, MCC_WindForce, MCC_Waves]],"MCC_fnc_setWeather",true,false] call BIS_fnc_MP;
+		[[[MCC_Overcast, MCC_WindForce, MCC_Waves]],"MCC_fnc_setWeather",true,false] call MCC_fnc_remoteExec;
 		publicVariable "MCC_Overcast";
 		publicVariable "MCC_WindForce";
 		publicVariable "MCC_Waves";
@@ -811,10 +811,10 @@ _html = _html + format ["<br/><t size='0.8' color='#E2EEE0'>Go over your objecti
 
 _music = ["LeadTrack01a_F","LeadTrack02_F","LeadTrack03_F","LeadTrack04a_F","LeadTrack05_F","LeadTrack06_F","AmbientTrack03_F","BackgroundTrack03_F","BackgroundTrack01_F",
            "BackgroundTrack01a_F","BackgroundTrack02_F","LeadTrack01_F_EPA","LeadTrack02_F_EPA","EventTrack01_F_EPA","EventTrack01a_F_EPA","EventTrack03_F_EPA"] call BIS_fnc_selectRandom; 
-[[2,compile format ["playMusic '%1'",_music]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+[[2, "playMusic", [_music]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 
 //move that into client side
-[[_missionCenter,_objectives,overcast,_night,1,_html], "MCC_fnc_MWopenBriefing", true, false] spawn BIS_fnc_MP;
+[[_missionCenter,_objectives,overcast,_night,1,_html], "MCC_fnc_MWopenBriefing", true, false] call MCC_fnc_remoteExec;
 
 //Clear up
 MCC_MWisGenerating = false; 

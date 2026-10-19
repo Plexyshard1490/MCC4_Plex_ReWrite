@@ -116,7 +116,7 @@ _dummyAmbush = "bomb" createVehicle _pos;
 _init = '_this hideobject true;';
 
 waituntil {alive _dummyAmbush};
-[[[netid _dummyAmbush,_dummyAmbush], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+[[[netid _dummyAmbush,_dummyAmbush], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 
 _dummyAmbush setvariable ["iedTrigered", false, true]; 
 
@@ -164,7 +164,7 @@ if (isnil "_spotter") then {_spotter = ""}; //failsafe for passing the variables
 
 	if (_iedMarkerName !="") then
 	{
-		[[2,compile format ["deletemarkerlocal '%1';",_iedMarkerName]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;	//delete IED marker 
+		[[2, "deleteMarkerLocal", [format ["%1", _iedMarkerName]]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;	//delete IED marker
 	};
 	sleep 10;	//fail safe give the game enough time to read the variable from it before deleting it.
 	deletevehicle _dummyAmbush;

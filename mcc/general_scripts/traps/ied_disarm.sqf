@@ -45,23 +45,23 @@ if (_men distance _ied <3) then
 						{
 							if (_rand > 0.20) then {
 													hint "disarmed";
-													if (_randsound > 5) then {[[[netid _men,_men], "disarm1"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP} else {[[[netid _men,_men], "disarm2"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP};
+													if (_randsound > 5) then {[[[netid _men,_men], "disarm1"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;} else {[[[netid _men,_men], "disarm2"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;};
 													sleep 1;
 													_ied setvariable ["armed",false,true];
 													_ied removeAction _index;
 													_dummyMarker = _ied getvariable "iedMarkerName"; 
-													[[2,compile format ["deletemarkerlocal '%1';",_dummyMarker]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;	//delete IED marker 
+													[[2, "deleteMarkerLocal", [format ["%1", _dummyMarker]]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;	//delete IED marker
 													deletevehicle _ied;
 													}
 												else {
 													if (_rand >0.05) then {
 																		hint "Fail to disarm";
-																		if (_randsound > 5) then {[[[netid _men,_men], "disarmfail1"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP} else {[[[netid _men,_men], "disarmfail2"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP};
+																		if (_randsound > 5) then {[[[netid _men,_men], "disarmfail1"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;} else {[[[netid _men,_men], "disarmfail2"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;};
 																		}
 																	else {
 																		hint "Critical fail start runing";
 																		_ied removeAction _index;
-																		if (_randsound > 5) then {[[[netid _men,_men], "disarmcrit1"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP} else {[[[netid _men,_men], "disarmcrit2"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP};
+																		if (_randsound > 5) then {[[[netid _men,_men], "disarmcrit1"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;} else {[[[netid _men,_men], "disarmcrit2"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;};
 																		_ied setvariable ["armed",false,true];
 																		sleep 2 + random 3;
 																		"SmallSecondary" createVehicle _pos;
@@ -72,22 +72,22 @@ if (_men distance _ied <3) then
 						else {
 							if (_rand > 0.70) then {	//If it isn't a bomb expert <*Kaboom*>
 													hint "disarmed";
-													if (_randsound > 5) then {[[[netid _men,_men], "disarm3"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP} else {[[[netid _men,_men], "disarm4"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP};
+													if (_randsound > 5) then {[[[netid _men,_men], "disarm3"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;} else {[[[netid _men,_men], "disarm4"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;};
 													sleep 1;
 													_ied setvariable ["armed",false,true];
 													_ied removeAction _index;
 													_dummyMarker = _ied getvariable "iedMarkerName"; 
-													[[2,compile format ["deletemarkerlocal '%1';",_dummyMarker]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;	//delete IED marker 
+													[[2, "deleteMarkerLocal", [format ["%1", _dummyMarker]]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;	//delete IED marker
 													deletevehicle _ied;
 													}
 												else {
 												hint "Fail to disarm";
 													if (_rand >0.3) then {
-																		if (_randsound > 7) then {[[[netid _men,_men], "disarmfail1"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP} else {[[[netid _men,_men], "disarmfail2"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP};
+																		if (_randsound > 7) then {[[[netid _men,_men], "disarmfail1"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;} else {[[[netid _men,_men], "disarmfail2"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;};
 																	} else {
 																		hint "Critical fail start runing";
 																		_ied removeAction _index;
-																		if (_randsound > 5) then {[[[netid _men,_men], "disarmcrit1"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP; player switchmove "";} else {[[[netid _men,_men], "disarmcrit2"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP};
+																		if (_randsound > 5) then {[[[netid _men,_men], "disarmcrit1"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec; player switchmove "";} else {[[[netid _men,_men], "disarmcrit2"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;};
 																		_ied setvariable ["armed",false,true];
 																		sleep 3 + random 3;
 																		"SmallSecondary" createVehicle _pos;

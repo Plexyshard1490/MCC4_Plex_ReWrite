@@ -26,10 +26,10 @@ _type = _this select 0;
 			waituntil {mapClick};
 			if (MCC_UMUnit==0) then 
 				{
-					{[[[netID _x,_x],teleportPos], "MCC_fnc_moveToPos", true, false] spawn BIS_fnc_MP} foreach MCC_selectedUnits;
+					{[[[netID _x,_x],teleportPos], "MCC_fnc_moveToPos", true, false] call MCC_fnc_remoteExec;} foreach MCC_selectedUnits;
 				} else 
 					{
-						{{[[[netID _x,_x],teleportPos], "MCC_fnc_moveToPos", true, false] spawn BIS_fnc_MP} foreach (units _x);} foreach MCC_selectedUnits;
+						{{[[[netID _x,_x],teleportPos], "MCC_fnc_moveToPos", true, false] call MCC_fnc_remoteExec;} foreach (units _x);} foreach MCC_selectedUnits;
 					};
 		};
 		
@@ -38,11 +38,11 @@ _type = _this select 0;
 			_worldPos = deck modelToWorld [0,0,0];
 			if (MCC_UMUnit==0) then 
 			{
-				{[[[netID _x,_x],[_worldPos select 0, _worldPos select 1, 15.9]], "MCC_fnc_moveToPos", true, false] spawn BIS_fnc_MP} foreach MCC_selectedUnits;
+				{[[[netID _x,_x],[_worldPos select 0, _worldPos select 1, 15.9]], "MCC_fnc_moveToPos", true, false] call MCC_fnc_remoteExec;} foreach MCC_selectedUnits;
 			} 
 			else
 			{
-				{{[[[netID _x,_x],[_worldPos select 0, _worldPos select 1, 15.9]], "MCC_fnc_moveToPos", true, false] spawn BIS_fnc_MP} foreach (units _x);} foreach MCC_selectedUnits;
+				{{[[[netID _x,_x],[_worldPos select 0, _worldPos select 1, 15.9]], "MCC_fnc_moveToPos", true, false] call MCC_fnc_remoteExec;} foreach (units _x);} foreach MCC_selectedUnits;
 			};
 		};
 
@@ -259,7 +259,7 @@ _type = _this select 0;
 				else 
 				{
 				UMName =  MCC_UMunitsNames select (lbCurSel MCC_UM_LIST);
-				[[[netID UMName,UMName],0],"MCC_fnc_highCommand",true,false] call BIS_fnc_MP;
+				[[[netID UMName,UMName],0],"MCC_fnc_highCommand",true,false] call MCC_fnc_remoteExec;
 				};
 			};
 		};
@@ -272,7 +272,7 @@ _type = _this select 0;
 				{UMName =  MCC_UMunitsNames select (lbCurSel MCC_UM_LIST)} 
 				else {UMName = leader (UMgroupNames select (lbCurSel MCC_UM_LIST))};
 			hint "cleared all High Command units"; 
-			[[[netID UMName,UMName],1],"MCC_fnc_highCommand",true,false] call BIS_fnc_MP;
+			[[[netID UMName,UMName],1],"MCC_fnc_highCommand",true,false] call MCC_fnc_remoteExec;
 			};
 		};
 		
@@ -284,7 +284,7 @@ _type = _this select 0;
 				{UMName =  MCC_UMunitsNames select (lbCurSel MCC_UM_LIST)} 
 				else {UMName = leader (UMgroupNames select (lbCurSel MCC_UM_LIST))};
 			hint "Group Added"; 
-			[[[netID UMName,UMName],2],"MCC_fnc_highCommand",true,false] call BIS_fnc_MP;
+			[[[netID UMName,UMName],2],"MCC_fnc_highCommand",true,false] call MCC_fnc_remoteExec;
 			};
 		};
 
@@ -364,13 +364,13 @@ _type = _this select 0;
 			waituntil {MCC_click}; 					
 			if (MCC_UMUnit==0) then {
 				{
-					[[MCC_pos,[netId _x,_x],true,5000,_forEachIndex],"MCC_fnc_paradrop",_x,false] call BIS_fnc_MP;
+					[[MCC_pos,[netId _x,_x],true,5000,_forEachIndex],"MCC_fnc_paradrop",_x,false] call MCC_fnc_remoteExec;
 					sleep 0.5; 
 				} foreach MCC_selectedUnits;
 					} else {
 							{
 								{
-									[[MCC_pos,[netId _x,_x],true,5000,_forEachIndex],"MCC_fnc_paradrop",_x,false] call BIS_fnc_MP;
+									[[MCC_pos,[netId _x,_x],true,5000,_forEachIndex],"MCC_fnc_paradrop",_x,false] call MCC_fnc_remoteExec;
 									sleep 0.5; 
 								} foreach units _x;
 							} foreach MCC_selectedUnits;
@@ -389,7 +389,7 @@ _type = _this select 0;
 			if (MCC_UMUnit==0) then 
 			{
 				{
-					[[MCC_pos,[netId _x,_x],false,800,_forEachIndex],"MCC_fnc_paradrop",_x,false] call BIS_fnc_MP;
+					[[MCC_pos,[netId _x,_x],false,800,_forEachIndex],"MCC_fnc_paradrop",_x,false] call MCC_fnc_remoteExec;
 					sleep 0.5; 
 				} foreach MCC_selectedUnits;
 			} 
@@ -397,7 +397,7 @@ _type = _this select 0;
 			{
 				{
 					{
-						[[MCC_pos,[netId _x,_x],false,800,_forEachIndex],"MCC_fnc_paradrop",_x,false] call BIS_fnc_MP;
+						[[MCC_pos,[netId _x,_x],false,800,_forEachIndex],"MCC_fnc_paradrop",_x,false] call MCC_fnc_remoteExec;
 						sleep 0.5; 
 					} foreach units _x;
 				} foreach MCC_selectedUnits;
@@ -410,7 +410,7 @@ _type = _this select 0;
 			if (MCC_UMUnit==0) then 
 				{UMName =  MCC_UMunitsNames select (lbCurSel MCC_UM_LIST)} 
 				else {UMName = leader (UMgroupNames select (lbCurSel MCC_UM_LIST))};
-			[[[netid UMName,UMName], MCC_UMPIPView],"MCC_fnc_broadcast",true,false] spawn BIS_fnc_MP;
+			[[[netid UMName,UMName], MCC_UMPIPView],"MCC_fnc_broadcast",true,false] call MCC_fnc_remoteExec;
 		};
 		
 		case 12:	//Delete

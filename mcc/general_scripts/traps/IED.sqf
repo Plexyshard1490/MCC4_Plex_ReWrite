@@ -72,7 +72,7 @@ if (_IEDTriggerType==2) then	{		//manual detonation
 			};
 		};
 _dummyMarker = _dummy getvariable "iedMarkerName"; 
-if (!isnil "_dummyMarker") then {[[2,compile format ["deletemarkerlocal '%1';",_dummyMarker]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP};	//delete IED marker 
+if (!isnil "_dummyMarker") then {[[2, "deleteMarkerLocal", [format ["%1", _dummyMarker]]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;};	//delete IED marker
 _fakeIed removeaction 0;
 _armed = _dummy getvariable "armed";
 if (isnil "_armed") then {_armed = false}; 

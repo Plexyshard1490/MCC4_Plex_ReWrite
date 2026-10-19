@@ -34,7 +34,7 @@ _sb setvariable ["iedTrigered", false, true];
 		_fakeIedS = _this select 0;
 		_iedMarkerNameS = _this select 1;
 		waituntil {!alive _fakeIedS};
-		[[2,compile format ["deletemarkerlocal '%1';",_iedMarkerNameS]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;	//delete IED marker 
+		[[2, "deleteMarkerLocal", [format ["%1", _iedMarkerNameS]]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;	//delete IED marker
 		_fakeIedS setvariable ["iedTrigered", true, true]; 
 	};
 
@@ -79,7 +79,7 @@ while {alive _sb && _check} do
 									_sb setskill ["courage",1];
 									_sb domove (getpos _enemy);
 									_sb domove (getpos _enemy);
-									if (_sound == 1) then {[[[netid _sb,_sb], "suicide"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP;_sound = 0};
+									if (_sound == 1) then {[[[netid _sb,_sb], "suicide"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;_sound = 0};
 									if ((_sb distance _enemy) <=15) exitwith { _check= false;};
 									};
 								};

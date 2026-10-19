@@ -17,7 +17,7 @@ switch _type do
 				} foreach allMapMarkers;
 				
 				{
-					[[2, "", "", "", "", "", _x, []],"MCC_fnc_makeMarker",true,false] spawn BIS_fnc_MP;; 
+					[[2, "", "", "", "", "", _x, []],"MCC_fnc_makeMarker",true,false] call MCC_fnc_remoteExec;
 				} foreach _markers;
 			};
 		case "All Units":	
@@ -38,7 +38,7 @@ switch _type do
 				} foreach allMapMarkers;
 				
 				{
-					[[2, "", "", "", "", "", _x, []],"MCC_fnc_makeMarker",true,false] spawn BIS_fnc_MP;; 
+					[[2, "", "", "", "", "", _x, []],"MCC_fnc_makeMarker",true,false] call MCC_fnc_remoteExec;
 				} foreach _markers;
 				
 				_nearObjects = []; 

@@ -2,11 +2,14 @@
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
 
-for [ { _i = 0 }, { _i < count(paramsArray) }, { _i = _i + 1 } ] do
-{
-	_paramName =(configName ((missionConfigFile >> "Params") select _i));
-	_paramValue = (paramsArray select _i);
-	_paramCode = ( getText (missionConfigFile >> "Params" >> _paramName >> "code"));
-	_code = format[_paramCode, _paramValue];
-	call compile _code;
+for "_i" from 0 to (count paramsArray - 1) do {
+	private _parameter = (missionConfigFile >> "Params") select _i;
+	private _parameterName = configName _parameter;
+	private _variableName = getText (_parameter >> "variable");
+
+	if (_variableName isEqualTo "") then {
+		diag_log format ["F3: Parameter '%1' has no variable target.", _parameterName];
+	} else {
+		missionNamespace setVariable [_variableName, paramsArray select _i];
+	};
 };

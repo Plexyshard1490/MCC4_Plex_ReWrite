@@ -8,39 +8,39 @@ cutText ["","BLACK",0.1];
 //******************************************************************************************************************************
 waituntil {alive player};
 
-[["officerLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] spawn BIS_fnc_MP;
+[["officerLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] call MCC_fnc_remoteExec;
 waituntil {! isnil "officerLevel"};
 if (CP_debug) then {player sidechat format ["officerLevel : %1",officerLevel]};
 
-[["arLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] spawn BIS_fnc_MP;
+[["arLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] call MCC_fnc_remoteExec;
 waituntil {! isnil "arLevel"};
 if (CP_debug) then {player sidechat format ["arLevel : %1",arLevel]};
 
-[["riflemanLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] spawn BIS_fnc_MP;
+[["riflemanLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] call MCC_fnc_remoteExec;
 waituntil {! isnil "riflemanLevel"};
 if (CP_debug) then {player sidechat format ["riflemanLevel : %1",riflemanLevel]};
 
-[["ATLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] spawn BIS_fnc_MP;
+[["ATLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] call MCC_fnc_remoteExec;
 waituntil {! isnil "ATLevel"};
 if (CP_debug) then {player sidechat format ["ATLevel : %1",ATLevel]};
 
-[["corpsmanLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] spawn BIS_fnc_MP;
+[["corpsmanLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] call MCC_fnc_remoteExec;
 waituntil {! isnil "corpsmanLevel"};
 if (CP_debug) then {player sidechat format ["corpsmanLevel : %1",corpsmanLevel]};
 
-[["marksmanLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] spawn BIS_fnc_MP;
+[["marksmanLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] call MCC_fnc_remoteExec;
 waituntil {! isnil "marksmanLevel"};
 if (CP_debug) then {player sidechat format ["marksmanLevel : %1",marksmanLevel]};
 
-[["specialistLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] spawn BIS_fnc_MP;
+[["specialistLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] call MCC_fnc_remoteExec;
 waituntil {! isnil "specialistLevel"};
 if (CP_debug) then {player sidechat format ["specialistLevel : %1",specialistLevel]};
 
-[["crewLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] spawn BIS_fnc_MP;
+[["crewLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] call MCC_fnc_remoteExec;
 waituntil {! isnil "crewLevel"};
 if (CP_debug) then {player sidechat format ["crewLevel : %1",crewLevel]};
 
-[["pilotLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] spawn BIS_fnc_MP;
+[["pilotLevel",getPlayerUID player,CP_defaultLevel], "CP_fnc_getVariable", false, false] call MCC_fnc_remoteExec;
 waituntil {! isnil "pilotLevel"};
 if (CP_debug) then {player sidechat format ["pilotLevel : %1",pilotLevel]};
 

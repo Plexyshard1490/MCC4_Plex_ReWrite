@@ -20,7 +20,7 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 			{
 				hint "Task Captured";
 				MCC_capture_var = MCC_capture_var + FORMAT ['
-								 [[%1, "%2", "%3", %4],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;
+								 [[%1, "%2", "%3", %4],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;
 								'								 
 								,_type
 								,_stringName
@@ -29,7 +29,7 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 								];
 			} else {
 				mcc_safe=mcc_safe + FORMAT ['
-										 [[%1, "%2", "%3", %4],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;
+										 [[%1, "%2", "%3", %4],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;
 										sleep 1;'								 
 										,_type
 										,_stringName
@@ -37,7 +37,7 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 										,_pos
 										];
 				hint "Task updated";
-				[[_type, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;
+				[[_type, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call MCC_fnc_remoteExec;
 				sleep 1;
 				_comboBox = (findDisplay MCC_SANDBOX3_IDD) displayCtrl MCC_TASKS_LIST; //fill Tasks
 				lbClear _comboBox;
@@ -59,7 +59,7 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 			{
 			onMapSingleClick " 	hint 'Wp captured.'; 
 								MCC_capture_var = MCC_capture_var + FORMAT ['
-								[[%1, ""%2"", %3, %4],""MCC_fnc_makeTaks"",true,false] spawn BIS_fnc_MP;
+								[[%1, ""%2"", %3, %4],""MCC_fnc_makeTaks"",true,false] spawn MCC_fnc_remoteExec;
 								'
 								,typ
 								,stringName
@@ -71,9 +71,9 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 			else 
 			{
 			onMapSingleClick " 	hint 'Wp added.'; 
-								[[typ, stringName, stringDescription, _pos],'MCC_fnc_makeTaks',true,false] spawn BIS_fnc_MP;
+								[[typ, stringName, stringDescription, _pos],'MCC_fnc_makeTaks',true,false] spawn MCC_fnc_remoteExec;
 								mcc_safe=mcc_safe + FORMAT [""
-										[[%1, '%2', %3, %4],'MCC_fnc_makeTaks',true,false] spawn BIS_fnc_MP;
+										[[%1, '%2', %3, %4],'MCC_fnc_makeTaks',true,false] spawn MCC_fnc_remoteExec;
 										sleep 1;""								 
 										,typ
 										,stringName
@@ -95,15 +95,15 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 			{
 			hint "Task Succeeded Captured"; 
 			MCC_capture_var = MCC_capture_var + FORMAT ['
-								[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;
+								[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;
 								'
 								,_stringName
 								];
 			} else
 			{
-			[[2, _stringName, _stringDescription, [0,0,0]],'MCC_fnc_makeTaks',true,false] spawn BIS_fnc_MP;
+			[[2, _stringName, _stringDescription, [0,0,0]],'MCC_fnc_makeTaks',true,false] call MCC_fnc_remoteExec;
 			/*_stringDescription setTaskState "SUCCEEDED";
-			[[2,compile format ["['TaskSucceeded',['','%1']] call bis_fnc_showNotification;", _stringName]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+			[[2, "showNotification", ["TaskSucceeded", ["", _stringName]]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 			*/
 			};
 		};
@@ -118,13 +118,13 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 			{
 			hint "Task Succeeded Captured"; 
 			MCC_capture_var = MCC_capture_var + FORMAT ['
-								[[3, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;
+								[[3, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;
 								'
 								,_stringName
 								];
 			} else
 				{
-					[[3, _stringName, _stringDescription, [0,0,0]],'MCC_fnc_makeTaks',true,false] spawn BIS_fnc_MP;
+					[[3, _stringName, _stringDescription, [0,0,0]],'MCC_fnc_makeTaks',true,false] call MCC_fnc_remoteExec;
 				};
 		};
 		
@@ -138,13 +138,13 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 			{
 			hint "Task Succeeded Captured"; 
 			MCC_capture_var = MCC_capture_var + FORMAT ['
-								[[4, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;
+								[[4, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;
 								'
 								,_stringName
 								];
 			} else
 				{
-					[[4, _stringName, _stringDescription, [0,0,0]],'MCC_fnc_makeTaks',true,false] spawn BIS_fnc_MP;
+					[[4, _stringName, _stringDescription, [0,0,0]],'MCC_fnc_makeTaks',true,false] call MCC_fnc_remoteExec;
 				};
 		};
 		
@@ -153,12 +153,12 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 			if (MCC_capture_state) then
 			{
 			MCC_capture_var = MCC_capture_var + FORMAT ['
-								[[2,{"end1" call BIS_fnc_endMission; playMusic "Track06_CarnHeli";}], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+								[[2, "endMission", ["end1", "Track06_CarnHeli", false]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 								'
 								];
 			} else
 			{
-			[[2,{"end1" call BIS_fnc_endMission; playMusic "Track06_CarnHeli";}], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+			[[2, "endMission", ["end1", "Track06_CarnHeli", false]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 			};
 		};
 		
@@ -167,12 +167,12 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 			if (MCC_capture_state) then
 			{
 			MCC_capture_var = MCC_capture_var + FORMAT ['
-								[[2,{if (CP_activated) then {cutText ["","BLACK",0.1]; player setdamage 1;}; "LOSER" call BIS_fnc_endMission; playMusic "Track07_ActionDark";}], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+								[[2, "endMission", ["LOSER", "Track07_ActionDark", true]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 								'
 								];
 			} else
 			{
-			[[2,{if (CP_activated) then {cutText ["","BLACK",0.1]; player setdamage 1};"LOSER" call BIS_fnc_endMission; playMusic "Track07_ActionDark";}], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+			[[2, "endMission", ["LOSER", "Track07_ActionDark", true]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 			};
 		};
 		
@@ -187,7 +187,7 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 			{
 			onMapSingleClick " 	hint 'Wp captured.'; 
 								MCC_capture_var = MCC_capture_var + FORMAT ['
-								[[%1, ""%2"", %3, %4],""MCC_fnc_makeTaks"",true,false] spawn BIS_fnc_MP;
+								[[%1, ""%2"", %3, %4],""MCC_fnc_makeTaks"",true,false] spawn MCC_fnc_remoteExec;
 								'
 								,typ
 								,stringName
@@ -198,9 +198,9 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 			} else 
 			{
 			onMapSingleClick " 	hint 'Wp added.'; 
-								[[typ, stringName, stringDescription, _pos],'MCC_fnc_makeTaks',true,false] spawn BIS_fnc_MP;
+								[[typ, stringName, stringDescription, _pos],'MCC_fnc_makeTaks',true,false] spawn MCC_fnc_remoteExec;
 								mcc_safe=mcc_safe + FORMAT [""
-										[[%1, '%2', %3, %4],'MCC_fnc_makeTaks',true,false] spawn BIS_fnc_MP;
+										[[%1, '%2', %3, %4],'MCC_fnc_makeTaks',true,false] spawn MCC_fnc_remoteExec;
 										sleep 1;""								 
 										,typ
 										,stringName
@@ -222,7 +222,7 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 			{
 				hint "Task Succeeded Captured"; 
 				MCC_capture_var = MCC_capture_var + FORMAT ['
-								[[9, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;
+								[[9, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;
 								'
 								,_stringName
 								];
@@ -230,7 +230,7 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 			else
 			{
 				_tasks = str MCC_tasks; 
-				[[9, _stringName, _stringDescription, [0,0,0]],'MCC_fnc_makeTaks',true,false] spawn BIS_fnc_MP;
+				[[9, _stringName, _stringDescription, [0,0,0]],'MCC_fnc_makeTaks',true,false] call MCC_fnc_remoteExec;
 				
 				waituntil {_tasks != str MCC_tasks};
 				sleep 1;
@@ -245,4 +245,3 @@ _dlg = findDisplay MCC_SANDBOX3_IDD;
 		};
 	 };
 } else {player globalchat "Access Denied"};
-

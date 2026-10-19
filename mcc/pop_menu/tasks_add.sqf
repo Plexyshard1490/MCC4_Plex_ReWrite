@@ -71,7 +71,7 @@ switch (_type) do
 			if (_stringName == (MCC_tasks select _i) select 0) then {_counter = _i; _i = count MCC_tasks}; 
 			};
 		if (isnil "_counter") exitWith {}; 
-		[[2,compile format ["((MCC_tasks select %1) select 1) setTaskState 'SUCCEEDED'", _counter] ], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+		[[2, "setTaskState", [_counter, "SUCCEEDED"]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 		sleep 2; 
 		['TaskSucceeded',["",_stringName]] call bis_fnc_showNotification;
 	};
@@ -81,7 +81,7 @@ switch (_type) do
 		for [{_i=0},{_i < count MCC_tasks},{_i=_i+1}] do {
 			if (_stringName == (MCC_tasks select _i) select 0) then {_counter = _i; _i = count MCC_tasks}; 
 			};
-		[[2,compile format ["((MCC_tasks select %1) select 1) setTaskState 'FAILED'", _counter] ], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+		[[2, "setTaskState", [_counter, "FAILED"]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 		sleep 2; 
 		['TaskFailed',["",_stringName]] call bis_fnc_showNotification;
 	};
@@ -91,7 +91,7 @@ switch (_type) do
 		for [{_i=0},{_i < count MCC_tasks},{_i=_i+1}] do {
 			if (_stringName == (MCC_tasks select _i) select 0) then {_counter = _i; _i = count MCC_tasks}; 
 			};
-		[[2,compile format ["((MCC_tasks select %1) select 1) setTaskState 'CANCELED'", _counter] ], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+		[[2, "setTaskState", [_counter, "CANCELED"]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 		sleep 2; 
 		['TaskCanceled',["",_stringName]] call bis_fnc_showNotification;
 	};
@@ -162,7 +162,7 @@ switch (_type) do
 	
 	if (isnil "_counter") exitWith {};
 	
-	[[2,compile format ["player removeSimpleTask ((MCC_tasks select %1) select 1)", _counter] ], "MCC_fnc_globalExecute", true, false] call BIS_fnc_MP;
+	[[2, "removeSimpleTask", [_counter]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 	
 	sleep 1;
 	//If server then trim the Array

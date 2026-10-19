@@ -68,19 +68,19 @@ switch (_task) do
                              ];
       
       //Create A task
-      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call BIS_fnc_MP;
+      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call MCC_fnc_remoteExec;
       
       //Give it public name
-      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call BIS_fnc_MP;
+      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call MCC_fnc_remoteExec;
       
       //---Create A trigger---
       //Fail - not alive
-      _capturVar = FORMAT ['[[3, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;',_stringName];
+      _capturVar = FORMAT ['[[3, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;',_stringName];
       _stateCond = FORMAT ['!alive %1', _name];
       [0, getpos _unit, [1,1], "NONE", "PRESENT", "RECTANGLE", name _unit, _capturVar,0,2,_stateCond,""] execVM MCC_path + "mcc\general_scripts\triggers\triggers_execute.sqf";
       
       //Succeed - not hostage
-      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;',_stringName];
+      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;',_stringName];
       _stateCond = FORMAT ['(!captive %1) && (alive %1)', _name];
       [0, getpos _obj, [1,1], "NONE", "PRESENT", "RECTANGLE", name _obj, _capturVar,0,2,_stateCond,""] execVM MCC_path + "mcc\general_scripts\triggers\triggers_execute.sqf";
    };
@@ -107,14 +107,14 @@ switch (_task) do
                              ];
 
       //Create A task
-      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call BIS_fnc_MP;
+      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call MCC_fnc_remoteExec;
 
       //Give it public name
-      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call BIS_fnc_MP;
+      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call MCC_fnc_remoteExec;
 
       //---Create A trigger---
       //Succeed alive
-      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;',_stringName];
+      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;',_stringName];
       _stateCond = FORMAT ['!alive %1 || (isplayer (leader group %1))', _name];
       [0, getpos _obj, [1,1], "NONE", "PRESENT", "RECTANGLE", name _obj, _capturVar,0,2,_stateCond,""] execVM MCC_path + "mcc\general_scripts\triggers\triggers_execute.sqf";
    };
@@ -133,14 +133,14 @@ switch (_task) do
                              ];
       
       //Create A task
-      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call BIS_fnc_MP;
+      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call MCC_fnc_remoteExec;
       
       //Give it public name
-      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call BIS_fnc_MP;
+      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call MCC_fnc_remoteExec;
       
       //---Create A trigger---
       //Succeed alive
-      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;',_stringName];
+      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;',_stringName];
       _stateCond = FORMAT ['!alive %1', _name];
       [0, getpos _obj, [1,1], "NONE", "PRESENT", "RECTANGLE", name _obj, _capturVar,0,2,_stateCond,""] execVM MCC_path + "mcc\general_scripts\triggers\triggers_execute.sqf";
    };
@@ -159,14 +159,14 @@ switch (_task) do
                              ];
       
       //Create A task
-      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call BIS_fnc_MP;
+      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call MCC_fnc_remoteExec;
       
       //Give it public name
-      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call BIS_fnc_MP;
+      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call MCC_fnc_remoteExec;
       
       //---Create A trigger---
       //Succeed alive
-      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;',_stringName];
+      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;',_stringName];
       _stateCond = FORMAT ['!alive %1', _name];
       [0, getpos _obj, [1,1], "NONE", "PRESENT", "RECTANGLE", name _obj, _capturVar,0,2,_stateCond,""] execVM MCC_path + "mcc\general_scripts\triggers\triggers_execute.sqf";
    };
@@ -185,14 +185,14 @@ switch (_task) do
                              ];
       
       //Create A task
-      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call BIS_fnc_MP;
+      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call MCC_fnc_remoteExec;
       
       //Give it public name
-      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call BIS_fnc_MP;
+      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call MCC_fnc_remoteExec;
       
       //---Create A trigger---
       //Succeed alive
-      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;',_stringName];
+      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;',_stringName];
       _stateCond = FORMAT ['!alive %1', _name];
       [0, getpos _obj, [1,1], "NONE", "PRESENT", "RECTANGLE", name _obj, _capturVar,0,2,_stateCond,""] execVM MCC_path + "mcc\general_scripts\triggers\triggers_execute.sqf";
    };
@@ -209,14 +209,14 @@ switch (_task) do
                              ];
       
       //Create A task
-      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call BIS_fnc_MP;
+      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call MCC_fnc_remoteExec;
       
       //Give it public name
-      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call BIS_fnc_MP;
+      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call MCC_fnc_remoteExec;
       
       //---Create A trigger---
       //Succeed alive
-      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;',_stringName];
+      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;',_stringName];
       _stateCond = FORMAT ['!alive %1', _name];
       [0, getpos _obj, [1,1], "NONE", "PRESENT", "RECTANGLE", name _obj, _capturVar,0,2,_stateCond,""] execVM MCC_path + "mcc\general_scripts\triggers\triggers_execute.sqf";
    };
@@ -233,14 +233,14 @@ switch (_task) do
                              ];
       
       //Create A task
-      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call BIS_fnc_MP;
+      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call MCC_fnc_remoteExec;
       
       //Give it public name
-      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call BIS_fnc_MP;
+      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call MCC_fnc_remoteExec;
       
       //---Create A trigger---
       //Succeed alive
-      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;',_stringName];
+      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;',_stringName];
       _stateCond = FORMAT ['!alive %1', _name];
       [0, getpos _obj, [1,1], "NONE", "PRESENT", "RECTANGLE", name _obj, _capturVar,0,2,_stateCond,""] execVM MCC_path + "mcc\general_scripts\triggers\triggers_execute.sqf";
    };
@@ -257,14 +257,14 @@ switch (_task) do
                              ];
       
       //Create A task
-      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call BIS_fnc_MP;
+      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call MCC_fnc_remoteExec;
       
       //Give it public name
-      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call BIS_fnc_MP;
+      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call MCC_fnc_remoteExec;
       
       //---Create A trigger---
       //Succeed alive
-      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;',_stringName];
+      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;',_stringName];
       _stateCond = FORMAT ['!alive %1', _name];
       [0, getpos _obj, [1,1], "NONE", "PRESENT", "RECTANGLE", name _obj, _capturVar,0,2,_stateCond,""] execVM MCC_path + "mcc\general_scripts\triggers\triggers_execute.sqf";
    };
@@ -281,14 +281,14 @@ switch (_task) do
                              ];
       
       //Create A task
-      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call BIS_fnc_MP;
+      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call MCC_fnc_remoteExec;
       
       //Give it public name
-      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call BIS_fnc_MP;
+      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call MCC_fnc_remoteExec;
       
       //---Create A trigger---
       //Succeed alive
-      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;',_stringName];
+      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;',_stringName];
       _stateCond = FORMAT ['!alive %1', _name];
       [0, getpos _obj, [1,1], "NONE", "PRESENT", "RECTANGLE", name _obj, _capturVar,0,2,_stateCond,""] execVM MCC_path + "mcc\general_scripts\triggers\triggers_execute.sqf";
    };
@@ -307,13 +307,13 @@ switch (_task) do
                              ];
       
       //Create A task
-      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call BIS_fnc_MP;
+      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call MCC_fnc_remoteExec;
       
       //Give it public name
-      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call BIS_fnc_MP;
+      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call MCC_fnc_remoteExec;
       
       //---Create A trigger---
-      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;',_stringName];
+      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;',_stringName];
       _stateCond = FORMAT ['!alive %1', _name];
       [0, getpos _obj, [1,1], "NONE", "PRESENT", "RECTANGLE", name _obj, _capturVar,0,2,_stateCond,""] execVM MCC_path + "mcc\general_scripts\triggers\triggers_execute.sqf";
    };
@@ -329,13 +329,13 @@ switch (_task) do
                              ];
       
       //Create A task
-      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call BIS_fnc_MP;
+      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call MCC_fnc_remoteExec;
       
       //Give it public name
-      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call BIS_fnc_MP;
+      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call MCC_fnc_remoteExec;
       
       //---Create A trigger---
-      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;',_stringName];
+      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;',_stringName];
       _stateCond = FORMAT ['!alive %1', _name];
       [0, getpos _obj, [1,1], "NONE", "PRESENT", "RECTANGLE", name _obj, _capturVar,0,2,_stateCond,""] execVM MCC_path + "mcc\general_scripts\triggers\triggers_execute.sqf";
    };
@@ -351,13 +351,13 @@ switch (_task) do
                              ];
       
       //Create A task
-      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call BIS_fnc_MP;
+      [[8, _stringName, _stringDescription, _pos],"MCC_fnc_makeTaks",true,false] call MCC_fnc_remoteExec;
       
       //Give it public name
-      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call BIS_fnc_MP;
+      [[[netid _obj,_obj], _name], "MCC_fnc_setVehicleName", true, false] call MCC_fnc_remoteExec;
       
       //---Create A trigger---
-      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn BIS_fnc_MP;',_stringName];
+      _capturVar = FORMAT ['[[2, "%1", "", [0,0,0]],"MCC_fnc_makeTaks",true,false] spawn MCC_fnc_remoteExec;',_stringName];
       _stateCond = FORMAT ['!alive %1', _name];
       [0, getpos _obj, [1,1], "NONE", "PRESENT", "RECTANGLE", _name, _capturVar,0,2,_stateCond,""] execVM MCC_path + "mcc\general_scripts\triggers\triggers_execute.sqf";
    };

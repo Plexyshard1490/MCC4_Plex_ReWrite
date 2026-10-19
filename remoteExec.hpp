@@ -1,0 +1,61 @@
+// Additive whitelist entries; missions using Functions.mode = 1 enforce this list.
+class CfgRemoteExec
+{
+	class Functions
+	{
+		class CP_fnc_getVariable { allowedTargets = 2; jip = 0; };
+		class CP_fnc_setValue { allowedTargets = 0; jip = 0; };
+		class VAS_fnc_transferNetwork { allowedTargets = 1; jip = 0; };
+		class CP_fnc_buildSpawnPoint { allowedTargets = 2; jip = 0; };
+		class CP_fnc_setVariable { allowedTargets = 2; jip = 0; };
+		class MCC_fnc_ACSingle { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_FPS { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_MWObjectiveClear { allowedTargets = 2; jip = 0; };
+		class MCC_fnc_MWObjectiveDestroy { allowedTargets = 2; jip = 0; };
+		class MCC_fnc_MWObjectiveDisable { allowedTargets = 2; jip = 0; };
+		class MCC_fnc_MWObjectiveHVT { allowedTargets = 2; jip = 0; };
+		class MCC_fnc_MWObjectiveIntel { allowedTargets = 2; jip = 0; };
+		class MCC_fnc_MWSpawnStatic { allowedTargets = 2; jip = 0; };
+		class MCC_fnc_MWopenBriefing { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_MWreinforcement { allowedTargets = 2; jip = 0; };
+		class MCC_fnc_MusicTrigger { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_SBSingle { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_airDrop { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_ambushSingle { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_artillery { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_boxGenerator { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_broadcast { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_buildRoadblock { allowedTargets = 2; jip = 0; };
+		class MCC_fnc_deleteBrush { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_evacDelete { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_evacMove { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_evacSpawn { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_garrison { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_globalExecute { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_globalHint { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_globalSay3D { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_groupSpawn { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_groupchat { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_highCommand { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_iedSync { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_makeBriefing { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_makeMarker { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_makeTaks { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_manageWp { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_mineSingle { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_moveToPos { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_paradrop { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_placeConvoy { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_setTime { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_setVehicleInit { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_setVehicleName { allowedTargets = 0; jip = 1; };
+		class MCC_fnc_setWeather { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_simpleSpawn { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_startConvoy { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_startLocations { allowedTargets = 0; jip = 0; };
+		class MCC_fnc_trapSingle { allowedTargets = 0; jip = 0; };
+		class mcc_fnc_login { allowedTargets = 0; jip = 0; };
+		class mcc_setup { allowedTargets = 0; jip = 0; };
+		class mcc_setup_hc { allowedTargets = 0; jip = 0; };
+	};
+};

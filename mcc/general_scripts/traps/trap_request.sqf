@@ -102,7 +102,7 @@ if !mcc_isloading then
 								if (MCC3DRuning) then 
 									{
 										MCC_capture_var=MCC_capture_var + FORMAT ["
-										[[%1 , %2 select 0, %3 select 0, %4, %5 , %6, %7, %8, %9, %10 select 0,%11,[],[]],""MCC_fnc_trapSingle"",false,false] call BIS_fnc_MP;
+										[[%1 , %2 select 0, %3 select 0, %4, %5 , %6, %7, %8, %9, %10 select 0,%11,[],[]],""MCC_fnc_trapSingle"",false,false] call MCC_fnc_remoteExec;
 										_eib_marker = createMarkerlocal [%10 select 0 ,%1];
 										_eib_marker setMarkerTypelocal ""selector_selectedMission"";
 										_eib_marker setMarkerColorlocal ""ColorRed"";
@@ -143,7 +143,7 @@ if !mcc_isloading then
 										_eib_marker setMarkerColorlocal "ColorRed";
 										_eib_marker setMarkerTextlocal (IedName select 0);
 										mcc_safe=mcc_safe + FORMAT ["
-										[[%1 , %2 select 0, %3 select 0, %4, %5 , %6, %7, %8, %9, %10 select 0,%11,[],[]],""MCC_fnc_trapSingle"",false,false] call BIS_fnc_MP;
+										[[%1 , %2 select 0, %3 select 0, %4, %5 , %6, %7, %8, %9, %10 select 0,%11,[],[]],""MCC_fnc_trapSingle"",false,false] call MCC_fnc_remoteExec;
 										sleep 1;
 										_eib_marker = createMarkerlocal [%10 select 0 ,%1];
 										_eib_marker setMarkerTypelocal ""selector_selectedMission"";
@@ -162,7 +162,7 @@ if !mcc_isloading then
 										, IedName 
 										, MCC3DValue select 1
 										];
-										[[MCC3DValue select 0 , trapkind select 0, MCC_trapvolume select 0, IEDExplosionType, IEDDisarmTime , IEDJammable, IEDTriggerType, trapdistance, iedside, IedName select 0, MCC3DValue select 1,[],[]],"MCC_fnc_trapSingle",false,false] call BIS_fnc_MP;
+										[[MCC3DValue select 0 , trapkind select 0, MCC_trapvolume select 0, IEDExplosionType, IEDDisarmTime , IEDJammable, IEDTriggerType, trapdistance, iedside, IedName select 0, MCC3DValue select 1,[],[]],"MCC_fnc_trapSingle",false,false] call MCC_fnc_remoteExec;
 										MCC_3Dterminate = true; 
 									};
 								sleep 0.1;
@@ -183,7 +183,7 @@ if !mcc_isloading then
 					if (MCC_capture_state) then
 						{
 						MCC_capture_var=MCC_capture_var + FORMAT ['
-						[[%1 select 0, %2 select 0,%3,%4],"MCC_fnc_mineSingle",true,false] call BIS_fnc_MP;
+						[[%1 select 0, %2 select 0,%3,%4],"MCC_fnc_mineSingle",true,false] call MCC_fnc_remoteExec;
 						_eib_marker = createMarkerlocal [%2 select 0 ,%3];
 						_eib_marker setMarkerSizeLocal [(%4) select 0,(%4) select 1];
 						_eib_marker setMarkerShapeLocal "RECTANGLE";
@@ -203,7 +203,7 @@ if !mcc_isloading then
 							_eib_marker setMarkerBrushLocal  'GRID';
 							_eib_marker setMarkerColorlocal 'ColorRed';
 							mcc_safe=mcc_safe + FORMAT ["
-							[[%1 select 0, %2 select 0, %3, %4],'MCC_fnc_mineSingle',true,false] call BIS_fnc_MP;
+							[[%1 select 0, %2 select 0, %3, %4],'MCC_fnc_mineSingle',true,false] call MCC_fnc_remoteExec;
 							sleep 1;
 							_eib_marker = createMarkerlocal [%2 select 0 ,%3];
 							_eib_marker setMarkerSizeLocal [(%4) select 0,(%4) select 1];
@@ -216,7 +216,7 @@ if !mcc_isloading then
 							, MCC_drawBoxZonePos
 							, MCC_drawBoxZoneSize
 							];
-							[[trapkind select 0,IedName select 0,MCC_drawBoxZonePos ,MCC_drawBoxZoneSize],"MCC_fnc_mineSingle",true,false] call BIS_fnc_MP;
+							[[trapkind select 0,IedName select 0,MCC_drawBoxZonePos ,MCC_drawBoxZoneSize],"MCC_fnc_mineSingle",true,false] call MCC_fnc_remoteExec;
 							};
 						
 				};
@@ -241,7 +241,7 @@ if !mcc_isloading then
 								if (MCC3DRuning) then 
 									{
 										MCC_capture_var=MCC_capture_var + FORMAT ["
-										[[%1 , %2 select 0, %3 , %4 select 0, %5],""MCC_fnc_ACSingle"",true,false] call BIS_fnc_MP;
+										[[%1 , %2 select 0, %3 , %4 select 0, %5],""MCC_fnc_ACSingle"",true,false] call MCC_fnc_remoteExec;
 										_eib_marker = createMarkerlocal [%4 select 0 ,%1];
 										_eib_marker setMarkerTypelocal ""selector_selectedMission"";
 										_eib_marker setMarkerColorlocal ""ColorBlue"";
@@ -277,7 +277,7 @@ if !mcc_isloading then
 										_eib_marker setMarkerColorlocal "ColorBlue";
 										_eib_marker setMarkerTextlocal (IedName select 0);
 										mcc_safe=mcc_safe + FORMAT ["
-											[[%1 , %2 select 0, %3 , %4 select 0, %5],""MCC_fnc_ACSingle"",true,false] call BIS_fnc_MP;
+											[[%1 , %2 select 0, %3 , %4 select 0, %5],""MCC_fnc_ACSingle"",true,false] call MCC_fnc_remoteExec;
 											_eib_marker = createMarkerlocal [%4 select 0 ,%1];
 											_eib_marker setMarkerTypelocal ""selector_selectedMission"";
 											_eib_marker setMarkerColorlocal ""ColorBlue"";
@@ -289,7 +289,7 @@ if !mcc_isloading then
 											, IedName
 											, MCC3DValue select 1
 											];
-										[[MCC3DValue select 0 , trapkind select 0, iedside, IedName select 0, MCC3DValue select 1],"MCC_fnc_ACSingle",true,false] call BIS_fnc_MP;
+										[[MCC3DValue select 0 , trapkind select 0, iedside, IedName select 0, MCC3DValue select 1],"MCC_fnc_ACSingle",true,false] call MCC_fnc_remoteExec;
 										MCC_3Dterminate = true; 
 									};
 								sleep 0.1;
@@ -306,7 +306,7 @@ if !mcc_isloading then
 						{
 							onMapSingleClick " 	hint ""trap captured.""; 
 									MCC_capture_var=MCC_capture_var + FORMAT ['
-									[[%1 , %2 select 0, %3 select 0, %4, %5, %6 select 0],""MCC_fnc_SBSingle"",true,false] call BIS_fnc_MP;
+									[[%1 , %2 select 0, %3 select 0, %4, %5, %6 select 0],""MCC_fnc_SBSingle"",true,false] call MCC_fnc_remoteExec;
 									_eib_marker = createMarkerlocal [%6 select 0 ,%1];
 									_eib_marker setMarkerTypelocal ""selector_selectedMission"";
 									_eib_marker setMarkerColorlocal ""ColorRed"";
@@ -328,7 +328,7 @@ if !mcc_isloading then
 									_eib_marker setMarkerColorlocal 'ColorRed';
 									_eib_marker setMarkerTextlocal (IedName select 0);
 									mcc_safe=mcc_safe + FORMAT ['
-									[[%1 , %2 select 0, %3 select 0, %4, %5, %6 select 0],""MCC_fnc_SBSingle"",true,false] call BIS_fnc_MP;
+									[[%1 , %2 select 0, %3 select 0, %4, %5, %6 select 0],""MCC_fnc_SBSingle"",true,false] call MCC_fnc_remoteExec;
 									sleep 1;
 									_eib_marker = createMarkerlocal [%6 select 0 ,%1];
 									_eib_marker setMarkerTypelocal ""selector_selectedMission"";
@@ -342,7 +342,7 @@ if !mcc_isloading then
 									, iedside
 									, IedName 
 									];
-									[[_pos , trapkind select 0,MCC_trapvolume select 0, IEDExplosionType, iedside,IedName select 0],""MCC_fnc_SBSingle"",true,false] call BIS_fnc_MP;
+									[[_pos , trapkind select 0,MCC_trapvolume select 0, IEDExplosionType, iedside,IedName select 0],""MCC_fnc_SBSingle"",true,false] call MCC_fnc_remoteExec;
 									onMapSingleClick """";";
 						};
 				};

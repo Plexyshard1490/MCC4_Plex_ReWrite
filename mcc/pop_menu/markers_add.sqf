@@ -18,7 +18,7 @@ mcc_safe=mcc_safe + FORMAT ['	_case=%1;
 								_type="%6";
 								_text="%7";
 								_pos = %8;
-								[[_case, _color, _size, _shape, _brush, _type, _text, _pos],"MCC_fnc_makeMarker",true,false] spawn BIS_fnc_MP;
+								[[_case, _color, _size, _shape, _brush, _type, _text, _pos],"MCC_fnc_makeMarker",true,false] spawn MCC_fnc_remoteExec;
 								'								 
 								,_case
 								,_color

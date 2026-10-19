@@ -13,7 +13,7 @@
 #define MCC_IDCNAMETAGS 8410
 #define mcc_artilleryTitleIDC 8411
 
-private ["_string", "_resistanceHostile", "_AiSkill","_value","_ACEReviveTime","_ACESpectator","_t2t","_code"];
+private ["_string", "_resistanceHostile", "_AiSkill","_value","_ACEReviveTime","_ACESpectator","_t2t"];
 disableSerialization;
 
 if !mcc_isloading then	{
@@ -95,11 +95,11 @@ if !mcc_isloading then	{
 	
 	if ((lbCurSel mcc_artilleryTitleIDC) == 0) then 
 	{
-		[[2,compile format ["enableEngineArtillery false"]], "MCC_fnc_globalExecute", true, true] spawn BIS_fnc_MP;
+		[[2, "enableEngineArtillery", [false]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 	} 
 	else		 
 	{
-		[[2,compile format ["enableEngineArtillery true"]], "MCC_fnc_globalExecute", true, true] spawn BIS_fnc_MP;
+		[[2, "enableEngineArtillery", [true]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 	};
 	
 	/*
@@ -120,26 +120,4 @@ if !mcc_isloading then	{
 	
 	Hint "Mission Settings Saved";
     closedialog 0;
-	/*
-	MCC_sync = MCC_sync + _string; 
-	publicvariable "MCC_sync"; 
-	mcc_safe = mcc_safe + _string; //Safe it 
-	_code = compile _string;
-	[[2,_code], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;	//Broadcast to all clients
-	
-	_code = {	{
-					if (! isplayer _x) then {
-						_x setSkill ["aimingspeed", MCC_AI_Aim];
-						_x setSkill ["spotdistance", MCC_AI_Spot];
-						_x setSkill ["aimingaccuracy", MCC_AI_Aim];
-						_x setSkill ["aimingshake", MCC_AI_Aim];
-						_x setSkill ["spottime", MCC_AI_Spot];
-						_x setSkill ["commanding", MCC_AI_Command];
-						_x setSkill ["general", MCC_AI_Skill];
-						};
-				} forEach allUnits;
-			};
-	[[1,_code], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;	//Broadcast to all clients
-	
-*/
 };

@@ -26,7 +26,7 @@ if !mcc_isloading then
 				hint "click on map where you want to send artillery"; 
 				onMapSingleClick " 	hint ""Artillery captured."";
 									MCC_capture_var = MCC_capture_var + FORMAT ['
-									[[%1, ""%2"", %3, %4, %5, %6],""MCC_fnc_artillery"",true,false] spawn BIS_fnc_MP;
+									[[%1, ""%2"", %3, %4, %5, %6],""MCC_fnc_artillery"",true,false] spawn MCC_fnc_remoteExec;
 									'
 									,_pos
 									,shelltype
@@ -40,7 +40,7 @@ if !mcc_isloading then
 					{
 					hint "click on map where you want to send artillery"; 
 					onMapSingleClick " 	hint ""Artillery inbound."";
-									[[_pos, shelltype, shellspread, nshell,MCCSimulate,MCC_artyDelay],'MCC_fnc_artillery',true,false] spawn BIS_fnc_MP;
+									[[_pos, shelltype, shellspread, nshell,MCCSimulate,MCC_artyDelay],'MCC_fnc_artillery',true,false] spawn MCC_fnc_remoteExec;
 									onMapSingleClick """";";	
 					};
 			};
@@ -51,7 +51,6 @@ if !mcc_isloading then
 						publicVariable "HW_arti_types";
 						HW_arti_number_shells_per_hour = HW_arti_number_shells_per_hour + %3;
 						publicVariable "HW_arti_number_shells_per_hour";
-						[[2,{["MCCNotifications",["%1 %3 shells added","%4data\ammo_icon.paa",""]] call bis_fnc_showNotification;}], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
 						'
 						,_shellName
 						,shelltype
@@ -76,7 +75,7 @@ if !mcc_isloading then
 						Server setVariable ["Arti_EAST_shellsleft",HW_arti_number_shells_per_hour,true];
 						Server setVariable ["Arti_GUER_shellsleft",HW_arti_number_shells_per_hour,true];
 						Server setVariable ["Arti_CIV_shellsleft",HW_arti_number_shells_per_hour,true];
-						[[2,compile format ['["MCCNotifications",["%2 %1 shells added","%3data\ammo_icon.paa",""]] call bis_fnc_showNotification;',nshell,_shellName,MCC_path]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+						[[2, "showNotification", ["MCCNotifications", [format ["%2 %1 shells added", nshell, _shellName], format ["%3data\ammo_icon.paa", nshell, _shellName, MCC_path], ""]]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 						//["MCCNotifications",[format ["%2 %1 shells added",nshell,_shellName],format ["%1data\ammo_icon.paa",MCC_path],""]] call bis_fnc_showNotification;
 						};
 				hint format ["%1 Artillery enabled. \nAdded %2 artillery rounds",_shellName,nshell];

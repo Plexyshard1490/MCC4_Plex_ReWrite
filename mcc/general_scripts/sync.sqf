@@ -9,7 +9,7 @@ switch (_type) do
 		if (isserver) exitwith {};
 		waituntil {! isnil "MCC_fnc_countDownLine"}; 
 		mcc_sync_status = false; 
-		[[1,compile format ["[1,[netID %1,%1]] execVM '%2mcc\general_scripts\sync.sqf'",player,MCC_path]],"MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
+		[[1, "syncRequest", [[1, [netId player, player]]]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;
 		_loop = 20; 
 		for [{_x=1},{_x<=_loop},{_x=_x+1}]  do //Create progress bar
 		{
@@ -24,8 +24,12 @@ switch (_type) do
 			sleep 0.1;
 			if (!mcc_sync_status) then {sleep 3}; 
 		};
-		_ok = [] spawn compile MCC_sync;
-		Hint "Synchronizing Done";		
+		if (!isNil "MCC_sync" && {MCC_sync isEqualType ""} && {MCC_sync != ""}) then {
+			diag_log "MCC: Skipped execution of synchronized SQF text; remote SQF string execution is disabled.";
+			hint "Synchronization finished without executing remote SQF state.";
+		} else {
+			hint "Synchronizing Done";
+		};
 	};
    
    case 1:
@@ -34,7 +38,7 @@ switch (_type) do
 		_player = if (((_this select 1) select 0)=="") then {(_this select 1) select 1} else {objectFromNetID ((_this select 1) select 0)};
 		sleep 1;
 	   _d=[date select 0, date select 1, date select 2, date select 3, date select 4];
-	   [[_d],"MCC_fnc_setTime",true,false] spawn BIS_fnc_MP; 
+	   [[_d],"MCC_fnc_setTime",true,false] call MCC_fnc_remoteExec;
 	   _cloudLevel = overcast;
 	   _wind = windStr; 
 	   _waves = waves; 
@@ -42,7 +46,7 @@ switch (_type) do
 	   _lightning=lightnings;
 	   //_fog = fog;
 	   _weather = [_cloudLevel, _wind, _waves, _RainLevel,_lightning];
-	   [[_weather],"MCC_fnc_setWeather",true,false] spawn BIS_fnc_MP;
-	   [[2,compile format ["MCC_sync = '%1'; mcc_missionmaker = '%2'; mcc_sync_status = true;",MCC_sync, mcc_missionmaker]], "MCC_fnc_globalExecute", _player, false] spawn BIS_fnc_MP;
+	   [[_weather],"MCC_fnc_setWeather",true,false] call MCC_fnc_remoteExec;
+	   [[2, "syncState", [MCC_sync, mcc_missionmaker]], "MCC_fnc_globalExecute", _player, false] call MCC_fnc_remoteExec;
 	};
  };

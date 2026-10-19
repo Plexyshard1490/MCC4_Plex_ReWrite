@@ -354,14 +354,14 @@ else
 						_bomb = "Bo_Mk82" createvehicle [getpos _plane1 select 0,getpos _plane1 select 1,3000]; 	//make the bomb 
 						_bomb setpos [getpos _plane1 select 0,(getpos _plane1 select 1)-4,(getpos _plane1 select 2) -2];
 						_bomb setdir getdir _plane1;
-						[[[netid _bomb,_bomb], format["bon_Shell_In_v0%1",[1,2,3,4,5,6,7] select round random 6]], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP;
+						[[[netid _bomb,_bomb], format["bon_Shell_In_v0%1",[1,2,3,4,5,6,7] select round random 6]], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;
 						sleep 0.25;
 						_bomb setVelocity [((velocity vehicle _pilot1) select 0)/3, ((velocity vehicle _pilot1) select 1)/3,-30];
 						_bomb2 = "Bo_Mk82" createvehicle [getpos _plane1 select 0,getpos _plane1 select 1,3000]; 	//make the bomb 
 						_bomb2 setpos [getpos _plane1 select 0,(getpos _plane1 select 1)+4,(getpos _plane1 select 2) -2];
 						_bomb2 setdir getdir _plane1;
 						_bomb2 setVelocity [((velocity vehicle _pilot1) select 0)/3, ((velocity vehicle _pilot1) select 1)/3,-30];
-						[[[netid _bomb2,_bomb2], format["bon_Shell_In_v0%1",[1,2,3,4,5,6,7] select round random 6]], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP;
+						[[[netid _bomb2,_bomb2], format["bon_Shell_In_v0%1",[1,2,3,4,5,6,7] select round random 6]], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;
 						sleep 0.25;
 					};
 			};
@@ -373,10 +373,10 @@ else
 				for [{_x=1},{_x<=_ammount},{_x=_x+1}] do 
 					{
 						_nul=[[(_pos select 0)+50 - random 100,(_pos select 1)+50 - random 100,_pos select 2], getpos _plane1,"M_AT",200,true,""] execVM MCC_path + "mcc\general_scripts\CAS\missile_guide.sqf";
-						[[[netid _plane1,_plane1], "missileLunch"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP;
+						[[[netid _plane1,_plane1], "missileLunch"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;
 						sleep 0.6;
 						_nul=[[(_pos select 0)+50 - random 100,(_pos select 1)+50 - random 100,_pos select 2], getpos _plane1,"M_AT",200,true,""] execVM MCC_path + "mcc\general_scripts\CAS\missile_guide.sqf";
-						[[[netid _plane1,_plane1], "missileLunch"], "MCC_fnc_globalSay3D", true, false] spawn BIS_fnc_MP;
+						[[[netid _plane1,_plane1], "missileLunch"], "MCC_fnc_globalSay3D", true, false] call MCC_fnc_remoteExec;
 						sleep 0.6;
 					};
 			};

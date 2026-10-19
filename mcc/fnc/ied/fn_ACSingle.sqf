@@ -27,7 +27,7 @@ _group = creategroup civilian;
 _sb = _group createunit [_trapkind, _pos, [], 0, "NONE"];
 _null = [_sb,_iedside,25,_weapon,_mag] execVM MCC_path +"mcc\general_scripts\traps\cw.sqf";
 _init = "removeallweapons _this; _this setbehaviour 'CARELESS'; _this allowfleeing 0; _this addaction ['Neutralize Suspect','"+ MCC_path +"mcc\general_scripts\traps\neutralize.sqf',[],1,true,true,'','(_target distance _this) < 3'];";
-[[[netid _sb,_sb], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+[[[netid _sb,_sb], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 _sb setpos _pos;
 _sb addrating -1;
 _sb setdir _iedDir;
@@ -46,7 +46,7 @@ if (_iedMarkerName != "") then
 		_fakeIedS = _this select 0;
 		_iedMarkerNameS = _this select 1;
 		waituntil {!alive _fakeIedS};
-		[[2,compile format ["deletemarkerlocal '%1';",_iedMarkerNameS]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;	//delete IED marker 
+		[[2, "deleteMarkerLocal", [format ["%1", _iedMarkerNameS]]], "MCC_fnc_globalExecute", true, false] call MCC_fnc_remoteExec;	//delete IED marker
 		_fakeIedS setvariable ["iedTrigered", true, true]; 
 	};
 };

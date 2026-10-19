@@ -43,7 +43,7 @@ if (_isCQB) then
 			_unitPlaced = true; 
 			
 			//Lets spawn some body guards
-			[[getpos _object,30,0,2,_faction,str _side],"MCC_fnc_garrison",false,false] spawn BIS_fnc_MP;
+			[[getpos _object,30,0,2,_faction,str _side],"MCC_fnc_garrison",false,false] call MCC_fnc_remoteExec;
 		};
 	};
 }
@@ -78,7 +78,7 @@ else		//Not CQB
 
 //Pick Item 
 _init = '_this call MCC_fnc_pickItem'; 
-[[[netID _object,_object], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+[[[netID _object,_object], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 
 //Start Briefings
 [_object,"pick_intel",_preciseMarkers] call MCC_fnc_MWCreateTask; 

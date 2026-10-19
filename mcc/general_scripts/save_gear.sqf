@@ -124,15 +124,18 @@ if (player getvariable ["MCC_allowed",false]) then
 	
 _null = player addaction ["<t color=""#FFCC00"">Open MCC Console</t>", MCC_path + "mcc\general_scripts\console\conoleOpenMenu.sqf",[0],-1,false,true,"teamSwitch",MCC_consoleString];
 if (CP_activated) exitWith {
-	_role = player getvariable "CP_role";							//Get player's role
-	_exp = call compile format  ["%1Level select 1",_role]; 		//Get role exp
-	if (!isnil "_exp") then {
-		if (CP_debug) then {player sidechat format ["rating: %1", _exp]};
-		_exp = (_exp + CP_rating);
-		if (_exp < 0) then {_exp = 0}; 
-		_level = call compile format ["[%1,%2]",floor (_exp/5000)+1 ,_exp];
-		if (CP_debug) then {player sidechat format ["level: %1",_level]};
-		[[format ["%1Level",_role],getplayeruID player,_level], "CP_fnc_setVariable", false, false] spawn BIS_fnc_MP;
-		};
+	private _roleName = player getVariable ["CP_role", ""];
+	private _role = toLower _roleName;
+	private _allowedRoles = ["officer", "ar", "rifleman", "at", "corpsman", "marksman", "specialist", "crew", "pilot"];
+	private _roleData = missionNamespace getVariable [format ["%1Level", _role], []];
+	if (_role in _allowedRoles && {_roleData isEqualType []} && {count _roleData > 1} && {(_roleData select 1) isEqualType 0}) then {
+		private _experience = (_roleData select 1) + CP_rating;
+		if (_experience < 0) then {_experience = 0};
+		private _level = [floor (_experience / 5000) + 1, _experience];
+		if (CP_debug) then {player sidechat format ["level: %1", _level]};
+		[[format ["%1Level", _roleName], getPlayerUID player, _level], "CP_fnc_setVariable", false, false] call MCC_fnc_remoteExec;
+	} else {
+		diag_log format ["CP: Skipped saving experience for unsupported or missing role '%1'.", _role];
+	};
 	_null=[] execVM CP_path + "scripts\player\player_init.sqf";
 	}; 

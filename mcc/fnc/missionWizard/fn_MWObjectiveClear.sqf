@@ -46,7 +46,7 @@ _trg setTriggerArea[_range,_range,0,false];
 _trg setTriggerActivation [str _side, "NOT PRESENT",false];
 
 //Create Marker
-[[1, "ColorRed",[_range*1.5,_range*1.5], "ELLIPSE", "DiagGrid", "Empty", ("clearArea" + _name), _objPos],"MCC_fnc_makeMarker",true,false] spawn BIS_fnc_MP;
+[[1, "ColorRed",[_range*1.5,_range*1.5], "ELLIPSE", "DiagGrid", "Empty", ("clearArea" + _name), _objPos],"MCC_fnc_makeMarker",true,false] call MCC_fnc_remoteExec;
 
 //Create Task
 [_trg,"clear_area",_preciseMarkers] call MCC_fnc_MWCreateTask; 
@@ -61,7 +61,7 @@ _trg setTriggerActivation [str _side, "NOT PRESENT",false];
 	
 	while {!(triggeractivated _trg)} do {sleep 5}; 
 	deleteVehicle _trg;
-	[[2, "",[], "", "", "Empty", _name, []],"MCC_fnc_makeMarker",true,false] spawn BIS_fnc_MP;
+	[[2, "",[], "", "", "Empty", _name, []],"MCC_fnc_makeMarker",true,false] call MCC_fnc_remoteExec;
 };
 
 /*

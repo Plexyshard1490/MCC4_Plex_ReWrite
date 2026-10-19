@@ -1,6 +1,6 @@
 //==================================================================MCC_fnc_globalHint======================================================================================
 // Broadcast a meesege on all clients
-// Example: [[_hint],'MCC_fnc_globalHint',true,true] spawn BIS_fnc_MP;
+// Example: [[_hint],'MCC_fnc_globalHint',true,true] spawn MCC_fnc_remoteExec;
 // Params: 
 //	_hint: string, messege to broadcast
 //==============================================================================================================================================================================	

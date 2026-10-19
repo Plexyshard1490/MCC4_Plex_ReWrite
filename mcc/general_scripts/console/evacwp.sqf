@@ -43,7 +43,7 @@ _point1 =getmarkerpos "evac_marker1";
 
 if (_type == 0) then {														// 1 WP
 	//hint "Markers placed";
-	[[[_point1], _flyInHight, _landing, [netid _evac,_evac]], "MCC_fnc_evacMove", true, false] call BIS_fnc_MP;
+	[[[_point1], _flyInHight, _landing, [netid _evac,_evac]], "MCC_fnc_evacMove", true, false] call MCC_fnc_remoteExec;
 	} else {																// 3 WP
 		hint  "Left click on the map to put 2nd WP";
 
@@ -80,6 +80,6 @@ if (_type == 0) then {														// 1 WP
 		sleep 0.5;
 			
 		hint "Markers placed";
-		[[[_point1, _point2, _point3], _flyInHight, _landing, [netid _evac,_evac]], "MCC_fnc_evacMove", true, false] call BIS_fnc_MP;
+		[[[_point1, _point2, _point3], _flyInHight, _landing, [netid _evac,_evac]], "MCC_fnc_evacMove", true, false] call MCC_fnc_remoteExec;
 		};
 

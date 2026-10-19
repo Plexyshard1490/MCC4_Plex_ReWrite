@@ -1,6 +1,6 @@
 //===================================================================MCC_fnc_broadcast=========================================================================================
 // Create a virtual camera and broadcast a short PiP video to all clients for 15 seconds. 
-// Example: [[[netid soldier1,soldier1], 0],"MCC_fnc_broadcast",true,false] spawn BIS_fnc_MP;
+// Example: [[[netid soldier1,soldier1], 0],"MCC_fnc_broadcast",true,false] spawn MCC_fnc_remoteExec;
 // Params:
 // 	soldier1: object - livefeed target
 //	 0: number - video mode 0: video, 1:night vision, 2:thermal

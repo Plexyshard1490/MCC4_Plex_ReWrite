@@ -22,15 +22,14 @@ _fakeIed = _trapkind createVehicle _pos;
 _fakeIed setpos _pos;
 _dummy = "Bomb" createVehicle _pos;
 _init = '_this hideobject true; _this addEventHandler ["handleDamage","_this execVM ""' + MCC_path + 'mcc\general_scripts\traps\ied_hit.sqf"""];';
-[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+[[[netid _dummy,_dummy], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 
 _init ='_this addaction ["<t color=""#FF9900"">" + "Disarm IED" + "</t>","' + MCC_path + 'mcc\general_scripts\traps\ied_disarm.sqf","",6,false,true,"_target distance _this < 10"];';
-[[[netid _fakeIed,_fakeIed], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+[[[netid _fakeIed,_fakeIed], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 _fakeIed setdir _iedDir;
 
 _dummy attachto [_fakeIed,[0,0,0]];
 
-//[[2,compile format ["(objectFromNetID '%1') hideobject true", netID _dummy]], "MCC_fnc_globalExecute", true, false] spawn BIS_fnc_MP;
 
 [_fakeIed, _dummy] spawn
 	{

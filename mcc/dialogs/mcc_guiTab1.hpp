@@ -241,7 +241,7 @@ class MCC_ghostMode: MCC_RscButton {idc = -1;text = "Ghost Mode";
 	h = 0.0329871 * safezoneH;
 	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
 	tooltip = "Make the mission maker invisible to enemies"; 
-	onButtonClick = "if (mcc_missionmaker == (name player)) then{if (captive player) then {player setcaptive false; [['Mission maker is no longer cheating'],'MCC_fnc_globalHint',true,false] call BIS_fnc_MP;} else {player setcaptive true; [['Mission maker is cheating'],'MCC_fnc_globalHint',true,false] spawn BIS_fnc_MP;}} else {player globalchat 'Access Denied'};";
+	onButtonClick = "if (mcc_missionmaker == (name player)) then{if (captive player) then {player setcaptive false; [['Mission maker is no longer cheating'],'MCC_fnc_globalHint',true,false] call MCC_fnc_remoteExec;} else {player setcaptive true; [['Mission maker is cheating'],'MCC_fnc_globalHint',true,false] call MCC_fnc_remoteExec;}} else {player globalchat 'Access Denied'};";
 };
 
 class MCC_spectator: MCC_RscButton

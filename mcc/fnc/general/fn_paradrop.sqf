@@ -1,6 +1,6 @@
 //===================================================================MCC_fnc_paradrop======================================================================================
 // Create a HALO or regular parachute jump for the given unit
-//Example:[[pos,[_unit, unitID],halo,hight,jumperNumber],"MCC_fnc_paradrop",true,false] call BIS_fnc_MP;
+//Example:[[pos,[_unit, unitID],halo,hight,jumperNumber],"MCC_fnc_paradrop",true,false] call MCC_fnc_remoteExec;
 // Params: 
 // 	pos: array, position.
 //	,[_unit, unitID]: object and number, unit ID for the jump

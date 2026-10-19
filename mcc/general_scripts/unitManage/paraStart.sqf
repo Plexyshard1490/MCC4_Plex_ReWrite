@@ -70,7 +70,7 @@ if (alive _unit && alive _plane) then {
 	
 	if (!isPlayer _unit) then {										//Start the run
 				_init = format ["_this playMove ""AmovPercMevaSrasWrflDf"";_this setdir %1",_dir];
-				[[[netid _unit,_unit], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+				[[[netid _unit,_unit], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 				}	else	{
 						_unit  playMove "amovpercmevasraswrfldf";						
 					};
@@ -80,7 +80,7 @@ if (alive _unit && alive _plane) then {
 	if ((animationState _unit) != "AmovPercMevaSrasWrflDf") then	{
 		if (!isPlayer _unit) then {
 				_init = format ["_this switchMove ""AmovPercMevaSrasWrflDf"";_this setdir %1",_dir];
-				[[[netid _unit,_unit], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+				[[[netid _unit,_unit], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 				}	else	{
 						_unit  switchMove "amovpercmevasraswrfldf";						
 					};
@@ -100,7 +100,7 @@ if (alive _unit && alive _plane) then {
 	_pos = getpos _unit;
 	detach _unit;
 	_init = "_this switchmove ""HaloFreeFall_non"";";
-	[[[netid _unit,_unit], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+	[[[netid _unit,_unit], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 	sleep 2; 
 		
 	//Open Chute
@@ -155,5 +155,5 @@ if (alive _unit && alive _plane) then {
 	_unit allowdamage true; 
 	while {((getpos _unit) select 2) > 1} do {sleep 1};   //Wait till the unit touch the ground
 	_init = "_this switchmove """";";
-	[[[netid _unit,_unit], _init], "MCC_fnc_setVehicleInit", true, true] spawn BIS_fnc_MP;
+	[[[netid _unit,_unit], _init], "MCC_fnc_setVehicleInit", true, false] call MCC_fnc_remoteExec;
 };

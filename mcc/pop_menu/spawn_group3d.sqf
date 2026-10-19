@@ -26,7 +26,7 @@ if (mcc_missionmaker == (name player)) then {
 				if (MCC_capture_state) then
 					{
 					 MCC_capture_var = MCC_capture_var + FORMAT ["
-										[[%1, %2, '%3', '%4', '%5', %6, '%7', '%8', %9],'MCC_fnc_simpleSpawn',true,false] spawn BIS_fnc_MP;		
+										[[%1, %2, '%3', '%4', '%5', %6, '%7', '%8', %9],'MCC_fnc_simpleSpawn',true,false] spawn MCC_fnc_remoteExec;
 										"
 										,MCC3DValue select 0
 										,MCC3DValue select 1
@@ -41,7 +41,7 @@ if (mcc_missionmaker == (name player)) then {
 					}	else
 						{
 						 mcc_safe = mcc_safe + FORMAT ["
-										[[%1, %2, '%3', '%4', '%5', %6, '%7', '%8', %9],'MCC_fnc_simpleSpawn',true,false] spawn BIS_fnc_MP;		
+										[[%1, %2, '%3', '%4', '%5', %6, '%7', '%8', %9],'MCC_fnc_simpleSpawn',true,false] spawn MCC_fnc_remoteExec;
 										MCC_mccFunctionDone = false; 
 										waitUntil {MCC_mccFunctionDone};
 										"
@@ -57,7 +57,7 @@ if (mcc_missionmaker == (name player)) then {
 										];
 						_pos = MCC3DValue select 0; 
 						if (!isnil "Object3D" && (mcc_spawntype=="VEHICLE")) then {waitUntil {_pos distance Object3D > 15}};
-						[[MCC3DValue select 0, MCC3DValue select 1, mcc_spawnname, mcc_spawntype, mcc_spawnfaction, mcc_spawnwithcrew,MCC_unitInit,MCC_unitName,mcc_hc],"MCC_fnc_simpleSpawn",true,false] spawn BIS_fnc_MP;		
+						[[MCC3DValue select 0, MCC3DValue select 1, mcc_spawnname, mcc_spawntype, mcc_spawnfaction, mcc_spawnwithcrew,MCC_unitInit,MCC_unitName,mcc_hc],"MCC_fnc_simpleSpawn",true,false] call MCC_fnc_remoteExec;
 						};
 				};
 			sleep 0.1;

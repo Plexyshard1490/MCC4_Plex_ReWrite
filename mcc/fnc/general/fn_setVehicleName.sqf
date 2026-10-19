@@ -1,14 +1,22 @@
 //==================================================================MCC_fnc_setVehicleName======================================================================================
 // Sets vehicle name
-// Example: [[[netid _unit,_unit], _name], "MCC_fnc_setVehicleName", true, true] spawn BIS_fnc_MP;
+// Example: [[[netid _unit,_unit], _name], "MCC_fnc_setVehicleName", true, true] spawn MCC_fnc_remoteExec;
 // Params: 
 //	_unit: object, vehicle we want to set its init. 
 //	_name: string, the new name
 //==============================================================================================================================================================================	
-private ["_unit","_unitname"];
+params ["_unitReference", "_unitName"];
 
-_unit = if (((_this select 0) select 0) == "") then {(_this select 0) select 1} else {objectFromNetID ((_this select 0) select 0)};
-_unitname = _this select 1;
+private _unit = if ((_unitReference select 0) isEqualTo "") then {
+	_unitReference select 1
+} else {
+	objectFromNetId (_unitReference select 0)
+};
 
-_unit setVehicleVarName _unitname;
-_unit call compile format ["%1=_This; PublicVariable ""%1""",_unitname];
+if (isNull _unit) exitWith {
+	diag_log "MCC: Refusing to assign a name to an unresolved object.";
+	false
+};
+
+_unit setVehicleVarName _unitName;
+missionNamespace setVariable [_unitName, _unit, true];
